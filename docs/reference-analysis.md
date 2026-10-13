@@ -24,5 +24,7 @@ Preços, horários, e-mail operacional, equipe e avaliações individuais: não 
 ## Arquivos locais
 Workspace inicialmente continha somente a pasta Referências, vazia. Nenhum AGENTS.md encontrado no projeto e diretórios pais consultados. Prompt integral lido do arquivo Texto colado.txt.
 ## Divergências intencionais
-Hero alinhado à esquerda para permitir CTA e leitura sobre fotografia; imagem central dominante e retrato em arco mantidos. Mármore reinterpretado com CSS sutil, sem usar os elementos de terceiros. Site permanece claro conforme a fonte da verdade; sem tema escuro que altere a referência. Seção de avaliações leva ao Google em vez de inventar depoimentos. Galeria é inspiração ilustrativa, não portfólio real. Sem equipe ou fotos do espaço até serem fornecidas.
+Hero alinhado à esquerda para permitir CTA e leitura sobre fotografia; imagem central dominante e retrato em arco mantidos. Mármore reinterpretado com CSS sutil, sem usar os elementos de terceiros. Site permanece claro conforme a fonte da verdade; sem tema escuro que altere a referência. Seção de avaliações apresenta três trechos reais atribuídos ao Google, reproduzidos pelo Portal do Casamento, com fonte explícita e link ao Maps. Veja reviews-sources.md para a conferência de 12/10/2026. Galeria é inspiração ilustrativa, não portfólio real. Sem equipe ou fotos do espaço até serem fornecidas.
 
+
+Atualização de 12/10/2026: nota 4,9 confirmada no Maps; três trechos individuais obtidos na reprodução pública identificada em reviews-sources.md. As limitações da coleta inicial acima referem-se à primeira entrega.

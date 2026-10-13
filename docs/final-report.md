@@ -47,7 +47,7 @@ Conteúdo dos perfis Instagram e Facebook consultados em HTML público. Endereç
 - [x] Animação somente opacity/transform, observer uma vez, stagger 80ms.
 - [x] Movimento reduzido, conteúdo visível sem JS, sem preloader ou scroll bloqueado.
 - [x] HTML renderizado no servidor, metatags/OG, favicon, sitemap, robots e BeautySalon JSON-LD.
-- [ ] Fotos reais do espaço/equipe/trabalhos e depoimentos autorizados: não fornecidos.
+- [ ] Fotos reais do espaço/equipe/trabalhos: não fornecidas. Depoimentos públicos adicionados por solicitação expressa do usuário; origem em reviews-sources.md.
 - [ ] Telefone, horários, valores e texto legal operacional confirmados pelo salão.
 
 ## Suposições e divergências
@@ -55,7 +55,7 @@ Conteúdo dos perfis Instagram e Facebook consultados em HTML público. Endereç
 2. Endereço consistente em cadastros, mas detalhes operacionais não extraídos da ficha Maps. Coordenadas preservadas da URL do usuário.
 3. Sem horários e preços confirmados: consultar equipe; sem dados fabricados.
 4. Hero original gerado e demais imagens de Unsplash com aviso ilustrativo. Galeria não afirma resultados reais nem equipe; wordmark tipográfico provisório.
-5. Sem avaliações individuais extraídas: seção leva às avaliações no Google.
+5. Três trechos positivos de avaliações atribuídas ao Google, com autoria e cinco estrelas, conferidos na reprodução pública do Portal do Casamento em 12/10/2026. O Maps direto confirmou nota 4,9, mas exibiu uma versão limitada sem os comentários. A seção identifica a fonte secundária e mantém o link para o Google.
 6. Site claro, fundo de mármore reinterpretado em CSS e título alinhado à esquerda; imagem de referência prevalece sobre padrões genéricos de design.
 7. Parte do levantamento de movimento foi observada no código, não em execução interativa da referência; durações/easings não identificados registrados como decisões próprias.
 8. Envio principal é WhatsApp revisável. E-mail implementado mas desabilitado com resposta clara até configuração. Nenhum agendamento automático ou confirmação fictícia.

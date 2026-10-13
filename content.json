@@ -119,7 +119,38 @@
       "file": "bridal.webp"
     }
   ],
-  "testimonials": [],
+  "testimonials": [
+    {
+      "author": "Gislaine Ferreira",
+      "rating": 5,
+      "quote": "Super bem recebida e atendimento nota 10!",
+      "leadingEllipsis": true,
+      "trailingEllipsis": true,
+      "sourceUrl": "https://portaldocasamento.com.br/fornecedores/perfil/meraki-salon-de0db84d",
+      "verifiedAt": "2026-10-12",
+      "verificationMethod": "Google reviews reproduced by Portal do Casamento; direct Maps shows limited view"
+    },
+    {
+      "author": "Debora Fortunato Wandscheer",
+      "rating": 5,
+      "quote": "Ambiente acolhedor, profissionais de altíssima qualidade",
+      "leadingEllipsis": true,
+      "trailingEllipsis": true,
+      "sourceUrl": "https://portaldocasamento.com.br/fornecedores/perfil/meraki-salon-de0db84d",
+      "verifiedAt": "2026-10-12",
+      "verificationMethod": "Google reviews reproduced by Portal do Casamento; direct Maps shows limited view"
+    },
+    {
+      "author": "Taienna Evangelista",
+      "rating": 5,
+      "quote": "Atendimento impecável, todos muito simpáticos e solicitos.",
+      "leadingEllipsis": false,
+      "trailingEllipsis": true,
+      "sourceUrl": "https://portaldocasamento.com.br/fornecedores/perfil/meraki-salon-de0db84d",
+      "verifiedAt": "2026-10-12",
+      "verificationMethod": "Google reviews reproduced by Portal do Casamento; direct Maps shows limited view"
+    }
+  ],
   "faqs": [
     {
       "question": "Como agendar meu atendimento?",
@@ -141,5 +172,10 @@
       "question": "Posso remarcar meu horário?",
       "answer": "Fale com a equipe assim que possível para consultar uma nova disponibilidade. As condições de remarcação e cancelamento devem ser combinadas diretamente com o salão."
     }
-  ]
+  ],
+  "reviews": {
+    "googleRating": 4.9,
+    "ratingVerifiedAt": "2026-10-12",
+    "sourceUrl": "https://portaldocasamento.com.br/fornecedores/perfil/meraki-salon-de0db84d"
+  }
 }

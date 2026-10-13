@@ -11,5 +11,3 @@ Paleta marfim e dourado, serifas e órbitas são autorizadas explicitamente pela
 | Fontes TTF iniciais | Fontes locais WOFF2 com font-display swap | Menos bytes e texto disponível durante carregamento |
 Detalhes: botões com pressão suave; hover só em pointer fine; modal e menu instantâneos por teclado; observer sem handlers contínuos de scroll; movimento reduzido respeitado.
 
-
-Atualização: revisão com Impeccable e novo carrossel de avaliações documentados em design-review-impeccable.md.

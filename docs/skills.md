@@ -12,7 +12,5 @@ Framework institucional estático autorizado pelo prompt; skills de React, Next,
 Lista de arquivos SKILL.md instalados consultável em skill-inventory.md. Nomes de ferramentas expostas nesta sessão em tool-inventory.md. Somente ferramentas necessárias foram chamadas.
 ## Ferramentas usadas
 Shell PowerShell (fallback escalado após falha do isolamento), web search, leitura de arquivos, imagegen, view_image, Sites create/source/save/deploy, open_in_codex. Node/esbuild, Zod, Playwright, axe-core, Lighthouse e auditoria de pacotes. node_repl e cua_repl apresentaram erro de inicialização.
-A entrega inicial não utilizou subagentes. A revisão com Impeccable utilizou dois agentes independentes: avaliação visual e detector/evidências. Não foram enviadas mensagens a terceiros.
+Não foram criados subagentes nem enviadas mensagens a terceiros.
 
-
-- Impeccable 4.3.1: context, critique independente como apoio, polish e craft-floor; dois agentes independentes para avaliação visual e detector/QA. Refinamento preservando identidade. Relatório em design-review-impeccable.md.

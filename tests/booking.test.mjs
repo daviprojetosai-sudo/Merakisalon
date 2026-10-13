@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { bookingSchema } from '../src/schema.js';
+import { booking } from '../src/worker.js';
+const tomorrow=new Date(Date.now()+86400000).toLocaleDateString('sv-SE',{timeZone:'America/Sao_Paulo'});
+const valid={name:'Cliente Teste',phone:'(54) 99999-9999',service:'cabelos',date:tomorrow,time:'14:30',notes:'Corte e cuidado',consent:true,website:'',token:'valid-token'};
+let counter=0;
+function req(data,origin='https://meraki.test',extra={}){return new Request('https://meraki.test/api/agendamento',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json',Accept:'application/json','cf-connecting-ip':'test-'+(++counter),...extra},body:JSON.stringify(data)});}
+test('dados válidos são normalizados',()=>{assert.equal(bookingSchema.parse(valid).phone,'54999999999');});
+test('entrada inválida, injeção, controle, consentimento e data são rejeitados',()=>{for(const data of [{...valid,name:'<script>alert(1)</script>'},{...valid,notes:'x\u0000'},{...valid,phone:'x'},{...valid,service:'admin'},{...valid,date:'2026-02-30'},{...valid,date:'2020-01-01'},{...valid,time:'25:00'},{...valid,consent:false},{...valid,admin:true}])assert.equal(bookingSchema.safeParse(data).success,false);});
+test('CSRF é bloqueado',async()=>{assert.equal((await booking(req(valid,'https://attacker.example'),{LOCAL_DEV:true})).status,403);});
+test('payload em excesso é bloqueado',async()=>{assert.equal((await booking(req({...valid,notes:'a'.repeat(9000)}),{LOCAL_DEV:true})).status,413);});
+test('honeypot rejeita sem envio externo',async()=>{assert.equal((await booking(req({...valid,website:'spam'}),{LOCAL_DEV:true},()=>{throw Error('Não deve chamar');})).status,400);});
+test('sem configuração retorna erro claro e não aceita envio',async()=>{assert.equal((await booking(req(valid),{LOCAL_DEV:true})).status,503);});
+test('WhatsApp sem JavaScript retorna redirecionamento validado',async()=>{const r=await booking(req({...valid,channel:'whatsapp'}),{LOCAL_DEV:true});assert.equal(r.status,303);assert.match(r.headers.get('location'),/^https:\/\/wa.me\/5554991693123\?text=/);});
+test('rate limit bloqueia sexta tentativa',async()=>{for(let i=0;i<6;i++){const r=req({...valid,channel:'whatsapp'});r.headers.set('cf-connecting-ip','rate-test');const response=await booking(r,{LOCAL_DEV:true});assert.equal(response.status,i===5?429:303);}});
+const env={TURNSTILE_SECRET_KEY:'mock-secret',TURNSTILE_SITE_KEY:'mock-site',RESEND_API_KEY:'mock-resend',BOOKING_FROM:'mock@example.test',BOOKING_TO:'mock@example.test',RATE_LIMIT_URL:'https://redis.example.test',RATE_LIMIT_TOKEN:'mock-redis'};
+test('envio válido verifica CAPTCHA e entrega texto simples sem dados em URL',async()=>{const calls=[];const fetcher=async(url,options)=>{calls.push({url:String(url),options});if(String(url).includes('redis'))return Response.json({result:1});if(String(url).includes('siteverify'))return Response.json({success:true,hostname:'meraki.test',action:'booking'});return Response.json({id:'mock-id'});};const response=await booking(req(valid),env,fetcher);assert.equal(response.status,200);assert.equal(calls.length,3);const email=JSON.parse(calls[2].options.body);assert.equal(email.html,undefined);assert.match(email.text,/Cliente Teste/);});
+test('CAPTCHA falso, hostname divergente e ação divergente não enviam email',async()=>{for(const result of [{success:false},{success:true,hostname:'attacker.test',action:'booking'},{success:true,hostname:'meraki.test',action:'wrong'}]){let emails=0;const r=await booking(req(valid),env,async(url)=>{if(String(url).includes('redis'))return Response.json({result:1});if(String(url).includes('resend'))emails++;return Response.json(result);});assert.equal(r.status,400);assert.equal(emails,0);}});
+test('falha do serviço externo retorna mensagem genérica',async()=>{const response=await booking(req(valid),env,()=>{throw Error('TOKEN-secret-detail');});assert.equal(response.status,503);assert.doesNotMatch(await response.text(),/TOKEN-secret/);});
+test('formulário HTML funciona sem JavaScript',async()=>{const r=new Request('https://meraki.test/api/agendamento',{method:'POST',headers:{Origin:'https://meraki.test','Content-Type':'application/x-www-form-urlencoded','cf-connecting-ip':'noscript'},body:new URLSearchParams({...valid,consent:'true',channel:'whatsapp'})});const response=await booking(r,{LOCAL_DEV:true});assert.equal(response.status,303);});
+

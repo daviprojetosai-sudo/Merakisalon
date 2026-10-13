@@ -1,0 +1,145 @@
+{
+  "name": "Meraki Salon",
+  "handle": "merakisalonbr",
+  "tagline": "Beleza feita com alma.",
+  "city": "Caxias do Sul",
+  "neighborhood": "Exposição",
+  "address": "Rua Dom José Baréa, 1813 • Sala 11",
+  "postalCode": "95084-100",
+  "state": "RS",
+  "latitude": -29.1731577,
+  "longitude": -51.172334,
+  "phone": "5554991693123",
+  "phoneDisplay": "(54) 99169-3123",
+  "phoneVerified": false,
+  "instagram": "https://www.instagram.com/merakisalonbr/",
+  "facebook": "https://www.facebook.com/profile.php?id=61553576744012",
+  "maps": "https://www.google.com/maps/place/?q=place_id:ChIJj5iHnVq9HpURSbgN3pykxtw",
+  "mapsSource": "https://www.google.com/maps/place/Meraki+Salon/@-29.1731577,-51.1749089,17z/data=!3m1!4b1!4m6!3m5!1s0x951ebd5a9c87988f:0xdcc6a49cde0db84d!8m2!3d-29.1731577!4d-51.172334!16s%2Fg%2F11xgvltb3c",
+  "hours": "Consulte os horários disponíveis com nossa equipe.",
+  "email": null,
+  "hero": {
+    "eyebrow": "BEAUTY · HAIR · EXPERIENCE",
+    "title": "Sua essência.",
+    "emphasis": "Nossa inspiração.",
+    "description": "Um momento para você. Um cuidado que valoriza sua beleza, respeita seu estilo e faz você se sentir bem."
+  },
+  "about": {
+    "eyebrow": "O SIGNIFICADO DE MERAKI",
+    "title": "Colocar a alma",
+    "emphasis": "em cada detalhe.",
+    "paragraphs": [
+      "Meraki é fazer algo com alma, criatividade e amor. É esse significado que inspira a nossa maneira de cuidar da beleza.",
+      "Em Caxias do Sul, reunimos cabelos, unhas, maquiagem e sobrancelhas em uma experiência que começa pela escuta. Para a rotina, uma nova fase ou um dia especial: o cuidado começa em você."
+    ]
+  },
+  "services": [
+    {
+      "id": "cabelos",
+      "number": "01",
+      "name": "Cabelos",
+      "description": "Cuidado, forma e cor para expressar o seu estilo. Converse com a equipe sobre cortes, coloração e tratamentos.",
+      "price": "Valores sob consulta",
+      "image": "hair",
+      "icon": "scissors"
+    },
+    {
+      "id": "unhas",
+      "number": "02",
+      "name": "Unhas",
+      "description": "Um cuidado dedicado às mãos e aos pés, com acabamento que acompanha a sua personalidade.",
+      "price": "Valores sob consulta",
+      "image": "nails",
+      "icon": "sparkle"
+    },
+    {
+      "id": "maquiagem",
+      "number": "03",
+      "name": "Maquiagem",
+      "description": "Realce seus traços e sinta-se você. Uma produção pensada para a ocasião e para o que você gosta.",
+      "price": "Valores sob consulta",
+      "image": "makeup",
+      "icon": "flower"
+    },
+    {
+      "id": "sobrancelhas",
+      "number": "04",
+      "name": "Sobrancelhas",
+      "description": "Detalhes que valorizam o olhar. Consulte as técnicas e encontre o cuidado que combina com você.",
+      "price": "Valores sob consulta",
+      "image": null,
+      "icon": "eye"
+    },
+    {
+      "id": "noivas",
+      "number": "05",
+      "name": "Noivas & ocasiões",
+      "description": "Seu grande dia começa com carinho. Conheça o espaço noiva e converse sobre produções para eventos e debutantes.",
+      "price": "Orçamento personalizado",
+      "image": "bridal",
+      "icon": "flower"
+    },
+    {
+      "id": "depilacao",
+      "number": "06",
+      "name": "Depilação",
+      "description": "Cuidado para a sua rotina. Consulte as opções de atendimento e a disponibilidade com nossa equipe.",
+      "price": "Valores sob consulta",
+      "image": null,
+      "icon": "sparkle"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "hair",
+      "title": "Textura & movimento",
+      "category": "CABELOS",
+      "alt": "Fotografia ilustrativa de mulher com cabelo castanho iluminado e ondas suaves.",
+      "file": "hero.webp"
+    },
+    {
+      "id": "makeup",
+      "title": "Beleza nos detalhes",
+      "category": "MAQUIAGEM",
+      "alt": "Fotografia de banco de imagens mostrando uma maquiagem sendo aplicada.",
+      "file": "makeup.webp"
+    },
+    {
+      "id": "nails",
+      "title": "Seu toque pessoal",
+      "category": "UNHAS",
+      "alt": "Fotografia de banco de imagens de cuidado de unhas.",
+      "file": "nails.webp"
+    },
+    {
+      "id": "bridal",
+      "title": "Momentos especiais",
+      "category": "NOIVAS",
+      "alt": "Fotografia de banco de imagens de uma mulher com cabelo preso.",
+      "file": "bridal.webp"
+    }
+  ],
+  "testimonials": [],
+  "faqs": [
+    {
+      "question": "Como agendar meu atendimento?",
+      "answer": "Você pode falar com a equipe pelo WhatsApp. Selecione um serviço no formulário para preparar sua solicitação. O horário fica confirmado somente após a resposta do salão."
+    },
+    {
+      "question": "Como consultar os valores dos serviços?",
+      "answer": "Os valores são informados pela equipe de acordo com o serviço desejado. Envie sua ideia ou referência para receber orientação e um orçamento antes de agendar."
+    },
+    {
+      "question": "Vocês atendem noivas e eventos?",
+      "answer": "Sim. O Meraki Salon informa em seus perfis atendimento para noivas e debutantes. Consulte a equipe sobre disponibilidade, preparação e opções para a sua ocasião."
+    },
+    {
+      "question": "Onde fica o Meraki Salon?",
+      "answer": "Na Rua Dom José Baréa, 1813, sala 11, no bairro Exposição, em Caxias do Sul, RS. Use o link de localização para traçar a rota e confirme os detalhes com a equipe."
+    },
+    {
+      "question": "Posso remarcar meu horário?",
+      "answer": "Fale com a equipe assim que possível para consultar uma nova disponibilidade. As condições de remarcação e cancelamento devem ser combinadas diretamente com o salão."
+    }
+  ]
+}

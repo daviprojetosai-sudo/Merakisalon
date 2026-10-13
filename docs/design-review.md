@@ -11,3 +11,5 @@ Paleta marfim e dourado, serifas e órbitas são autorizadas explicitamente pela
 | Fontes TTF iniciais | Fontes locais WOFF2 com font-display swap | Menos bytes e texto disponível durante carregamento |
 Detalhes: botões com pressão suave; hover só em pointer fine; modal e menu instantâneos por teclado; observer sem handlers contínuos de scroll; movimento reduzido respeitado.
 
+
+Correção de ícones mobile: setas de navegação e asteriscos da logo, faixa de especialidades e serviços substituídos por SVG com currentColor. Mesmo desenho nas duas versões, com dimensões responsivas existentes. Conferidos logo, CTA, menu mobile, galeria e páginas legais em Chrome com viewport desktop e emulação de iPhone; sem símbolos Unicode de seta/asterisco no texto renderizado. Layout anterior preservado.

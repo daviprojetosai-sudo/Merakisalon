@@ -16,7 +16,7 @@ document.querySelectorAll('.gallery-open').forEach(a=>a.addEventListener('click'
 $('#lightbox-close')?.addEventListener('click',()=>dialog.close());
 dialog?.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 dialog?.addEventListener('close',()=>opener?.focus());
-let galleryIndex=0;
+let galleryIndex=2;
 function galleryStep(direction){galleryIndex=(galleryIndex+direction+content.gallery.length)%content.gallery.length;document.querySelectorAll('.gallery-item').forEach((figure,i)=>{const item=content.gallery[(galleryIndex+i-1+content.gallery.length)%content.gallery.length],a=figure.querySelector('a'),image=figure.querySelector('img');a.href='/assets/'+item.file;a.dataset.gallery=item.id;a.setAttribute('aria-label','Ampliar: '+item.title);image.src=a.href;image.alt=item.alt;figure.querySelector('.eyebrow').textContent=item.category;figure.querySelector('.gallery-caption').textContent=item.title;});$('#gallery-count').textContent=String(galleryIndex+1).padStart(2,'0')+' / '+String(content.gallery.length).padStart(2,'0');}
 $('#gallery-prev')?.addEventListener('click',()=>galleryStep(-1));$('#gallery-next')?.addEventListener('click',()=>galleryStep(1));
 $('#load-map')?.addEventListener('click',()=>{const iframe=document.createElement('iframe');iframe.title='Localização do Meraki Salon em Caxias do Sul';iframe.referrerPolicy='no-referrer';iframe.loading='lazy';iframe.src='https://www.google.com/maps?q='+encodeURIComponent('Meraki Salon, Rua Dom José Baréa 1813, Caxias do Sul')+'&output=embed';$('.map-placeholder').replaceChildren(iframe);});
@@ -41,3 +41,18 @@ finally{resetCaptcha();buttons.forEach(b=>b.disabled=false);}
 
 dialog?.addEventListener('keydown',event=>{if(event.key!=='Tab')return;const controls=[...dialog.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')].filter(el=>!el.disabled);const first=controls[0],last=controls.at(-1);if(!first)return;if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}});
 
+
+const reviewTrack=$('#reviews-track'),reviewPrev=$('#reviews-prev'),reviewNext=$('#reviews-next');
+if(reviewTrack&&reviewPrev&&reviewNext){
+ const reviewStatus=$('#reviews-status');
+ function reviewControls(){const max=reviewTrack.scrollWidth-reviewTrack.clientWidth,overflows=max>2;reviewPrev.hidden=!overflows;reviewNext.hidden=!overflows;reviewPrev.disabled=reviewTrack.scrollLeft<=2;reviewNext.disabled=reviewTrack.scrollLeft>=max-2;}
+ function reviewMove(direction){const distance=reviewTrack.querySelector('.review').getBoundingClientRect().width+parseFloat(getComputedStyle(reviewTrack).gap);reviewTrack.scrollBy({left:direction*distance,behavior:reduced?'instant':'smooth'});reviewStatus.textContent=direction>0?'Próximas avaliações.':'Avaliações anteriores.';}
+ reviewPrev.addEventListener('click',()=>reviewMove(-1));reviewNext.addEventListener('click',()=>reviewMove(1));
+ reviewTrack.addEventListener('keydown',event=>{if(event.target!==reviewTrack)return;if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();reviewMove(event.key==='ArrowRight'?1:-1);}else if(event.key==='Home'||event.key==='End'){event.preventDefault();reviewTrack.scrollTo({left:event.key==='Home'?0:reviewTrack.scrollWidth,behavior:reduced?'instant':'smooth'});}});
+ let reviewFrame=0;reviewTrack.addEventListener('scroll',()=>{if(!reviewFrame)reviewFrame=requestAnimationFrame(()=>{reviewControls();reviewFrame=0;});},{passive:true});
+ if('ResizeObserver' in window)new ResizeObserver(reviewControls).observe(reviewTrack);else window.addEventListener('resize',reviewControls);
+ reviewControls();
+}
+
+// Keep the floating shortcut clear of visible in-section actions on phones.
+if('IntersectionObserver' in window){const shortcut=$('.floating-whatsapp');if(shortcut){const visibleActions=new Set();const updateShortcut=()=>{shortcut.hidden=matchMedia('(max-width:767px)').matches&&visibleActions.size>0;};const avoidOverlay=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting)visibleActions.add(entry.target);else visibleActions.delete(entry.target);}updateShortcut();},{threshold:.15});document.querySelectorAll('.reviews-bottom,.form-submit,.booking-copy .button').forEach(el=>avoidOverlay.observe(el));window.addEventListener('resize',updateShortcut);}}

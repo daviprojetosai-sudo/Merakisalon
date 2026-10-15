@@ -4,6 +4,7 @@ import { pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
 const r=spawnSync(process.execPath,['scripts/build.mjs'],{stdio:'inherit'}); if(r.status) process.exit(r.status);
 const {default:worker}=await import(pathToFileURL(process.cwd()+'/dist/server/index.js'));
+const localBucket={async get(key){if(!/^space\/space-[a-z0-9-]+\.webp$/.test(key))return null;try{return {body:await readFile('assets/'+key)};}catch{return null;}}};
 const port=Number(process.env.PORT||4173);
 const server=createServer(async(req,res)=>{
  try {
@@ -15,7 +16,7 @@ const server=createServer(async(req,res)=>{
  headers.set('cf-connecting-ip',req.socket.remoteAddress||'local');
  const body=Buffer.concat(chunks);
  const request=new Request(origin+req.url,{method:req.method,headers,...(!['GET','HEAD'].includes(req.method)?{body}: {})});
- const response=await worker.fetch(request,{...process.env,LOCAL_DEV:process.env.NODE_ENV!=='production'},{waitUntil:()=>{}});
+ const response=await worker.fetch(request,{...process.env,BUCKET:localBucket,LOCAL_DEV:process.env.NODE_ENV!=='production'},{waitUntil:()=>{}});
  res.writeHead(response.status,Object.fromEntries(response.headers));
  res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));
  }catch {res.writeHead(500);res.end('Não foi possível concluir a solicitação.');}

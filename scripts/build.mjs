@@ -5,6 +5,7 @@ import path from 'node:path';
 await mkdir('.openai/local',{recursive:true});await mkdir('dist/server',{recursive:true});await mkdir('dist/.openai',{recursive:true});
 const client=await build({entryPoints:['src/client.js'],outdir:'assets',bundle:true,minify:true,splitting:true,format:'esm',write:false,platform:'browser',target:'es2022',entryNames:'[name]-[hash]',chunkNames:'chunk-[hash]'});
 const assets={};
+await writeFile('.openai/local/media-manifest.js','export const mediaManifest = '+await readFile('assets/space/media-manifest.json','utf8')+';\n');
 for(const output of client.outputFiles)assets['/assets/'+path.basename(output.path)]={data:Buffer.from(output.contents).toString('base64'),type:'text/javascript; charset=utf-8'};
 const css=await readFile('src/styles.css','utf8');
 const clientOutput=client.outputFiles.find(output=>/^client-[^.]+\.js$/.test(path.basename(output.path)));

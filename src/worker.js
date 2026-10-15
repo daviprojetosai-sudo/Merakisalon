@@ -1,3 +1,4 @@
+import {media} from './media.js';
 import { assets } from '../.openai/local/assets.js';
 import { home,legal,messagePage,whatsapp } from './page.js';
 import { bookingSchema,whatsappMessage } from './schema.js';
@@ -67,10 +68,11 @@ export default {async fetch(request,env={}) {
  const url=new URL(request.url),nonce=crypto.randomUUID().replaceAll('-','');
  const origin=env.LOCAL_DEV?url.origin:canonical;
  let response;
- if(url.pathname==='/api/agendamento')response=await booking(request,env);
+ if(url.pathname.startsWith('/media/')||url.pathname.startsWith('/api/media/'))response=await media(request,env);
+ else if(url.pathname==='/api/agendamento')response=await booking(request,env);
  else if(!['GET','HEAD'].includes(request.method))response=new Response('Método não permitido.',{status:405,headers:{Allow:'GET, HEAD'}});
  else if(assets[url.pathname]){const a=assets[url.pathname];response=new Response(Uint8Array.from(atob(a.data),c=>c.charCodeAt(0)),{headers:{'Content-Type':a.type,'Cache-Control':'public, max-age=3600'}});}
- else if(url.pathname==='/')response=new Response(home(origin,nonce,env.TURNSTILE_SITE_KEY||''),{headers:{'Content-Type':'text/html; charset=utf-8'}});
+ else if(url.pathname==='/')response=new Response(home(origin,nonce,env.TURNSTILE_SITE_KEY||'',env.LOCAL_DEV||env.SPACE_GALLERY_READY==='true'),{headers:{'Content-Type':'text/html; charset=utf-8'}});
  else if(url.pathname==='/privacidade'||url.pathname==='/termos')response=new Response(legal(url.pathname.slice(1),origin),{headers:{'Content-Type':'text/html; charset=utf-8'}});
  else if(url.pathname==='/robots.txt')response=new Response('User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: '+origin+'/sitemap.xml\n',{headers:{'Content-Type':'text/plain; charset=utf-8'}});
  else if(url.pathname==='/sitemap.xml')response=new Response('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+['/','/privacidade','/termos'].map(p=>'<url><loc>'+origin+p+'</loc></url>').join('')+'</urlset>',{headers:{'Content-Type':'application/xml; charset=utf-8'}});

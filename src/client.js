@@ -101,9 +101,31 @@ if(bridal){
  track.addEventListener('keydown',event=>{const key=event.key;if(!['ArrowLeft','ArrowRight','Home','End'].includes(key))return;event.preventDefault();go(key==='Home'?0:key==='End'?slides.length-1:index+(key==='ArrowRight'?1:-1));});
  track.addEventListener('scroll',()=>{if(scrollFrame)return;scrollFrame=requestAnimationFrame(()=>{scrollFrame=null;const actual=Math.round(track.scrollLeft/track.clientWidth);if(actual>=0&&actual<slides.length&&actual!==index&&Math.abs(track.scrollLeft-actual*track.clientWidth)<2){index=actual;render();}});},{passive:true});
  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{threshold:.35}).observe(track);
- if('IntersectionObserver' in window&&$('.floating-whatsapp'))new IntersectionObserver(entries=>{$('.floating-whatsapp').hidden=entries[0].isIntersecting;}).observe(bridal);
+
  if('ResizeObserver' in window)new ResizeObserver(()=>track.scrollTo({left:index*track.clientWidth,behavior:'instant'})).observe(track);
  document.addEventListener('visibilitychange',schedule);window.addEventListener('pagehide',()=>clearTimeout(timer));window.addEventListener('pageshow',schedule);
  motion.addEventListener('change',()=>{if(motion.matches)pause();});
  render();
 }
+// The space viewer keeps full-size photography out of the initial page load.
+const spaceDialog=$('#space-lightbox');
+if(spaceDialog){
+ const photos=content.spaceGallery,photo=$('#space-full-photo'),position=$('#space-position');let index=0,trigger=null,requestId=0,pointerStart=null;
+ async function showSpacePhoto(next){
+  index=(next+photos.length)%photos.length;const selected=index,item=photos[index],id=++requestId;
+  position.textContent=String(index+1).padStart(2,'0')+' / '+String(photos.length).padStart(2,'0')+' · '+item.title;
+  const incoming=new Image();incoming.src='/media/'+item.file;photo.setAttribute('aria-busy','true');
+  try{await incoming.decode();if(id!==requestId||!spaceDialog.open)return;photo.src=incoming.src;photo.alt=item.alt;photo.width=item.width;photo.height=item.height;if(!matchMedia('(prefers-reduced-motion: reduce)').matches)photo.animate([{opacity:.45},{opacity:1}],{duration:220,easing:'cubic-bezier(0.16, 1, 0.3, 1)'});}
+  catch{if(id===requestId)position.textContent='A foto não carregou. Use as setas para tentar outra imagem.';}
+  finally{if(id===requestId)photo.removeAttribute('aria-busy');}
+ }
+ document.querySelectorAll('[data-space-photo]').forEach(link=>link.addEventListener('click',event=>{if(!spaceDialog.showModal)return;event.preventDefault();trigger=link;spaceDialog.showModal();photo.removeAttribute('src');photo.alt='';showSpacePhoto(Number(link.dataset.spacePhoto));$('#space-close').focus();}));
+ $('#space-close').addEventListener('click',()=>spaceDialog.close());$('#space-prev').addEventListener('click',()=>showSpacePhoto(index-1));$('#space-next').addEventListener('click',()=>showSpacePhoto(index+1));
+ spaceDialog.addEventListener('close',()=>{requestId++;photo.removeAttribute('aria-busy');trigger?.focus({preventScroll:true});});
+ spaceDialog.addEventListener('click',event=>{if(event.target!==spaceDialog)return;const r=spaceDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)spaceDialog.close();});
+ spaceDialog.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();showSpacePhoto(event.key==='Home'?0:event.key==='End'?photos.length-1:index+(event.key==='ArrowRight'?1:-1));}if(event.key==='Tab'){const controls=[...spaceDialog.querySelectorAll('button')],first=controls[0],last=controls.at(-1);if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}});
+ photo.addEventListener('pointerdown',event=>{pointerStart={x:event.clientX,y:event.clientY};photo.setPointerCapture(event.pointerId);});photo.addEventListener('pointerup',event=>{if(!pointerStart)return;const dx=event.clientX-pointerStart.x,dy=event.clientY-pointerStart.y;pointerStart=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)showSpacePhoto(index+(dx<0?1:-1));});photo.addEventListener('pointercancel',()=>{pointerStart=null;});
+}
+
+// Keep photo exploration unobstructed while either photographic section is visible.
+if('IntersectionObserver' in window&&$('.floating-whatsapp')){const visiblePhotoRegions=new Set();const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting)visiblePhotoRegions.add(entry.target);else visiblePhotoRegions.delete(entry.target);}$('.floating-whatsapp').hidden=visiblePhotoRegions.size>0;});document.querySelectorAll('.bridal-carousel,#nosso-espaco').forEach(region=>observer.observe(region));}

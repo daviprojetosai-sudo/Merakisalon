@@ -45,11 +45,3 @@
 @media(max-width:1023px){.bride-grid{grid-template-columns:1fr minmax(0,380px);gap:42px}}
 @media(max-width:767px){.bride-grid{grid-template-columns:minmax(0,1fr);gap:35px}.bridal-carousel{max-width:460px;justify-self:center}.bridal-heading{margin-bottom:12px}.bridal-thumbnails{gap:7px;margin-top:12px}}
 .bride-section{--muted:#655e53}
-
-/* The supplied hero film keeps the original brand composition and a static fallback. */
-.hero-video{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:center 44%;pointer-events:none}
-.hero-video-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 14px;flex-shrink:0;background:#302c25b3;color:var(--white);border:1px solid #f8f5ee90;font-size:12px;line-height:1.4}
-.hero-video-toggle .site-icon{width:16px;height:16px}.hero-play-icon{display:none}
-.hero-video-toggle[data-playing="false"] .hero-pause-icon{display:none}.hero-video-toggle[data-playing="false"] .hero-play-icon{display:block}
-@media(hover:hover){.hero-video-toggle:hover{background:var(--ink)}}
-@media(max-width:767px){.hero-video,.hero-picture img{object-position:61% center}.hero-bottom{gap:14px}.hero-bottom p{flex:1;min-width:0}.hero-video-toggle{padding:10px 11px;font-size:11px}}

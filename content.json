@@ -100,15 +100,14 @@
       "title": "Textura & movimento",
       "category": "CABELOS",
       "alt": "Cabelos loiros longos e ondulados vistos de costas.",
-      "file": "gallery-hair-restored-v1.webp"
+      "file": "gallery-hair-restored-v2.webp"
     },
     {
       "id": "nails",
       "title": "Seu toque pessoal",
       "category": "UNHAS",
-      "alt": "Imagem ilustrativa de unhas com esmalte preto e detalhes em tons de âmbar.",
-      "file": "nails.webp",
-      "illustrative": true
+      "alt": "Unhas em azul-petróleo com detalhe prateado de glitter e anel dourado, diante de vasos com folhagens secas.",
+      "file": "gallery-nails-v2.webp"
     },
     {
       "id": "brows",

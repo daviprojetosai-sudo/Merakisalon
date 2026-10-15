@@ -11,7 +11,7 @@ const clientOutput=client.outputFiles.find(output=>/^client-[^.]+\.js$/.test(pat
 if(!clientOutput)throw Error('Client entrypoint missing');
 const clientScript='/assets/'+path.basename(clientOutput.path),stylesheet='/assets/styles-'+createHash('sha256').update(css).digest('hex').slice(0,12)+'.css';
 await writeFile('.openai/local/asset-manifest.js','export const clientScript = '+JSON.stringify(clientScript)+';\nexport const stylesheet = '+JSON.stringify(stylesheet)+';\n');
-for(const filename of ['hero.webp','hero-small.webp','gallery-makeup.webp','gallery-bridal.webp','gallery-hair-restored-v1.webp','nails.webp','gallery-brows-v1.webp','cormorant.woff2','cormorant-italic.woff2','manrope.woff2','meraki-favicon.png','meraki-woman.svg','about-portrait.lossless.webp',...Array.from({length:4},(_,i)=>'noiva-'+(i+1)+'-original.lossless.webp'),'noiva-5-expanded.lossless.webp','noiva-6-original.lossless.webp']){
+for(const filename of ['hero.webp','hero-small.webp','gallery-makeup.webp','gallery-bridal.webp','gallery-hair-restored-v2.webp','gallery-nails-v2.webp','gallery-brows-v1.webp','cormorant.woff2','cormorant-italic.woff2','manrope.woff2','meraki-favicon.png','meraki-woman.svg','about-portrait.lossless.webp',...Array.from({length:4},(_,i)=>'noiva-'+(i+1)+'-original.lossless.webp'),'noiva-5-expanded.lossless.webp','noiva-6-original.lossless.webp']){
  const bytes=await readFile('assets/'+filename);assets['/assets/'+filename]={data:bytes.toString('base64'),type:filename.endsWith('webp')?'image/webp':filename.endsWith('woff2')?'font/woff2':filename.endsWith('png')?'image/png':'image/svg+xml'};
 }
 assets[stylesheet]={data:Buffer.from(css).toString('base64'),type:'text/css; charset=utf-8'};

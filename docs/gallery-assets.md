@@ -17,3 +17,7 @@ Restaurado o item Unhas (Seu toque pessoal) com a mesma foto anterior de Unsplas
 ## Sexta foto do Espaço Noiva
 
 Adicionada a foto fornecida em 15/10/2026: formanda com vestido vinho, diante do espelho. Original de 979 × 1305 preservado em assets/noiva-6-original.png; WebP sem perda em assets/noiva-6-original.lossless.webp. Galeria e miniaturas passam a seis fotos; contadores gerados a partir do total e apresentação integral com contain.
+
+## Foto real de Unhas
+
+A foto ilustrativa foi substituída pelo anexo de unhas azul-petróleo e glitter. Original PNG preservado em assets/gallery-nails-original.png; entrega WebP em qualidade 98 e resolução original, sem filtros. Removida a indicação de imagem ilustrativa deste item. Para acomodar a foto dentro do limite de 10 MiB comprimidos do Worker, a restauração de Cabelos também passa a WebP qualidade 98, com a mesma resolução e o PNG completo preservado. As fotos do Espaço Noiva, Maquiagem, Sobrancelhas e O Meraki não foram alteradas.

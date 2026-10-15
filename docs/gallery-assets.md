@@ -9,3 +9,7 @@ Todos os originais permanecem em assets/. As fotos são servidas em WebP sem per
 A foto de cabelos foi restaurada com o ImageGen integrado, de 206 × 206 para 1254 × 1254. Detalhes finos foram reconstruídos por IA; não se trata de recuperar o arquivo original de alta resolução. O original permanece preservado. O resultado está em assets/gallery-hair-restored.png, servido como gallery-hair-restored-v1.webp (conversão sem perda). Prompt e proveniência em assets/gallery-hair-restored-v1.webp.json. As demais fotos permanecem inalteradas.
 
 A navegação agora decodifica as fotos antes da troca e dissolve a imagem anterior por 280 ms, mantendo enquadramento e altura. Cliques rápidos são acumulados sem misturar estados. Movimento reduzido usa troca direta.
+
+## Unhas e Sobrancelhas
+
+Restaurado o item Unhas (Seu toque pessoal) com a mesma foto anterior de Unsplash, identificada como ilustrativa na ampliação. Adicionado Sobrancelhas (A expressão do seu olhar) com o anexo original fornecido pelo usuário, convertido para WebP sem perda. A galeria agora contém Maquiagem, Noivas, Cabelos, Unhas e Sobrancelhas; o contador do HTML é gerado a partir do total de itens. Transição e navegação existentes preservadas.

@@ -101,6 +101,21 @@
       "category": "CABELOS",
       "alt": "Cabelos loiros longos e ondulados vistos de costas.",
       "file": "gallery-hair-restored-v1.webp"
+    },
+    {
+      "id": "nails",
+      "title": "Seu toque pessoal",
+      "category": "UNHAS",
+      "alt": "Imagem ilustrativa de unhas com esmalte preto e detalhes em tons de âmbar.",
+      "file": "nails.webp",
+      "illustrative": true
+    },
+    {
+      "id": "brows",
+      "title": "A expressão do seu olhar",
+      "category": "SOBRANCELHAS",
+      "alt": "Detalhe de sobrancelhas definidas e penteadas, em foto fornecida pelo Meraki Salon.",
+      "file": "gallery-brows-v1.webp"
     }
   ],
   "testimonials": [

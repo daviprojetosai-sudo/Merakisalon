@@ -12,7 +12,7 @@ document.addEventListener('click',e=>{if(mobile?.open&&!mobile.contains(e.target
 const form=$('#booking-form'),status=$('#form-status');
 document.querySelectorAll('[data-select-service]').forEach(a=>a.addEventListener('click',()=>{if(form)form.elements.service.value=a.dataset.selectService;}));
 const dialog=$('#lightbox');let opener=null;
-document.querySelectorAll('.gallery-open').forEach(a=>a.addEventListener('click',event=>{if(!dialog?.showModal)return;event.preventDefault();opener=a;const item=content.gallery.find(i=>i.id===a.dataset.gallery);$('#lightbox-image').src='/assets/'+item.file;$('#lightbox-image').alt=item.alt;$('#lightbox-title').textContent=item.title;dialog.showModal();$('#lightbox-close').focus();}));
+document.querySelectorAll('.gallery-open').forEach(a=>a.addEventListener('click',event=>{if(!dialog?.showModal)return;event.preventDefault();opener=a;const item=content.gallery.find(i=>i.id===a.dataset.gallery);$('#lightbox-image').src='/assets/'+item.file;$('#lightbox-image').alt=item.alt;$('#lightbox-title').textContent=item.title;dialog.querySelector('p').textContent=item.illustrative?'Imagem ilustrativa.':'Meraki Salon';dialog.showModal();$('#lightbox-close').focus();}));
 $('#lightbox-close')?.addEventListener('click',()=>dialog.close());
 dialog?.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 dialog?.addEventListener('close',()=>opener?.focus());

@@ -78,15 +78,6 @@
       "price": "Orçamento personalizado",
       "image": "bridal",
       "icon": "flower"
-    },
-    {
-      "id": "depilacao",
-      "number": "06",
-      "name": "Depilação",
-      "description": "Cuidado para a sua rotina. Consulte as opções de atendimento e a disponibilidade com nossa equipe.",
-      "price": "Valores sob consulta",
-      "image": null,
-      "icon": "sparkle"
     }
   ],
   "gallery": [

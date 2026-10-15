@@ -7,7 +7,7 @@ const client=await build({entryPoints:['src/client.js'],outdir:'assets',bundle:t
 const assets={};
 for(const output of client.outputFiles)assets['/assets/'+path.basename(output.path)]={data:Buffer.from(output.contents).toString('base64'),type:'text/javascript; charset=utf-8'};
 const css=await readFile('src/styles.css','utf8');
-for(const filename of ['hero.webp','hero-small.webp','makeup.webp','nails.webp','bridal.webp','cormorant.woff2','cormorant-italic.woff2','manrope.woff2','meraki-favicon.png','meraki-woman.svg',...Array.from({length:4},(_,i)=>'noiva-'+(i+1)+'-original.png'),'noiva-5-expanded.png']){
+for(const filename of ['hero.webp','hero-small.webp','makeup.webp','nails.webp','bridal.webp','cormorant.woff2','cormorant-italic.woff2','manrope.woff2','meraki-favicon.png','meraki-woman.svg','about-portrait.png',...Array.from({length:4},(_,i)=>'noiva-'+(i+1)+'-original.png'),'noiva-5-expanded.png']){
  const bytes=await readFile('assets/'+filename);assets['/assets/'+filename]={data:bytes.toString('base64'),type:filename.endsWith('webp')?'image/webp':filename.endsWith('woff2')?'font/woff2':filename.endsWith('png')?'image/png':'image/svg+xml'};
 }
 assets['/assets/styles.css']={data:Buffer.from(css).toString('base64'),type:'text/css; charset=utf-8'};

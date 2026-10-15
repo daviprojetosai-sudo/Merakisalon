@@ -119,7 +119,7 @@ if(spaceDialog){
   catch{if(id===requestId)position.textContent='A foto não carregou. Use as setas para tentar outra imagem.';}
   finally{if(id===requestId)photo.removeAttribute('aria-busy');}
  }
- document.querySelectorAll('[data-space-photo]').forEach(link=>link.addEventListener('click',event=>{if(!spaceDialog.showModal)return;event.preventDefault();trigger=link;spaceDialog.showModal();photo.removeAttribute('src');photo.alt='';showSpacePhoto(Number(link.dataset.spacePhoto));$('#space-close').focus();}));
+ document.querySelectorAll('[data-space-photo]').forEach(link=>link.addEventListener('click',event=>{if(!spaceDialog.showModal)return;event.preventDefault();trigger=link;spaceDialog.showModal();photo.src=link.querySelector('img').currentSrc;photo.alt=link.querySelector('img').alt;showSpacePhoto(Number(link.dataset.spacePhoto));$('#space-close').focus();}));
  $('#space-close').addEventListener('click',()=>spaceDialog.close());$('#space-prev').addEventListener('click',()=>showSpacePhoto(index-1));$('#space-next').addEventListener('click',()=>showSpacePhoto(index+1));
  spaceDialog.addEventListener('close',()=>{requestId++;photo.removeAttribute('aria-busy');trigger?.focus({preventScroll:true});});
  spaceDialog.addEventListener('click',event=>{if(event.target!==spaceDialog)return;const r=spaceDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)spaceDialog.close();});

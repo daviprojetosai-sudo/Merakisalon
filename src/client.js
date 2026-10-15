@@ -69,3 +69,21 @@ if(bridal){
  motion.addEventListener('change',()=>{if(motion.matches)pause();});
  render();
 }
+
+// Motion preferences, page visibility and explicit pause control own hero playback.
+const heroVideo=$('#hero-video'),heroToggle=$('#hero-video-toggle');
+if(heroVideo&&heroToggle){
+ const heroMotion=matchMedia('(prefers-reduced-motion: reduce)');let userPaused=heroMotion.matches,heroVisible=true,videoLoaded=false,failed=false,playAttempt=0;
+ function renderHero(){const playing=!heroVideo.paused;heroToggle.dataset.playing=String(playing);heroToggle.querySelector('span').textContent=playing?'Pausar vídeo':'Reproduzir vídeo';heroToggle.setAttribute('aria-label',playing?'Pausar vídeo de fundo':'Reproduzir vídeo de fundo');}
+ function pauseHero(){playAttempt++;heroVideo.pause();renderHero();}
+ function playHero(){if(failed||userPaused||!heroVisible||document.hidden||!heroVideo.paused)return;if(!videoLoaded){const source=heroVideo.querySelector('source');source.src=source.dataset.src;videoLoaded=true;heroVideo.muted=true;heroVideo.load();}const attempt=++playAttempt;heroVideo.play().then(()=>{if(attempt!==playAttempt||userPaused||!heroVisible||document.hidden){heroVideo.pause();}renderHero();}).catch(()=>renderHero());}
+ function syncHero(){if(userPaused||!heroVisible||document.hidden)pauseHero();else playHero();}
+ heroToggle.hidden=false;heroVideo.muted=true;renderHero();
+ heroToggle.addEventListener('click',()=>{userPaused=!heroVideo.paused;if(userPaused)pauseHero();else playHero();});
+ heroVideo.addEventListener('play',renderHero);heroVideo.addEventListener('pause',renderHero);
+ heroVideo.addEventListener('error',()=>{failed=true;heroVideo.hidden=true;heroToggle.hidden=true;});
+ heroVideo.querySelector('source').addEventListener('error',()=>{failed=true;heroVideo.hidden=true;heroToggle.hidden=true;});
+ if('IntersectionObserver' in window)new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;syncHero();},{threshold:.05}).observe(heroVideo.closest('.hero'));
+ document.addEventListener('visibilitychange',syncHero);window.addEventListener('pagehide',pauseHero);window.addEventListener('pageshow',syncHero);
+ heroMotion.addEventListener('change',()=>{if(heroMotion.matches){userPaused=true;pauseHero();}});syncHero();
+}

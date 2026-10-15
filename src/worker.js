@@ -5,7 +5,7 @@ const localLimits=new Map();
 const canonical='https://meraki-salon-br.davi10boeira.chatgpt.site';
 function secured(response,nonce,url) {
  const headers=new Headers(response.headers);
- const directives=["default-src 'none'","script-src 'self' 'nonce-"+nonce+"' https://challenges.cloudflare.com","style-src 'self'","img-src 'self' data:","font-src 'self'","connect-src 'self' https://challenges.cloudflare.com","frame-src https://www.google.com https://challenges.cloudflare.com","frame-ancestors 'none'","base-uri 'none'","form-action 'self' https://wa.me","object-src 'none'"];
+ const directives=["default-src 'none'","script-src 'self' 'nonce-"+nonce+"' https://challenges.cloudflare.com","style-src 'self'","img-src 'self' data:","media-src 'self'","font-src 'self'","connect-src 'self' https://challenges.cloudflare.com","frame-src https://www.google.com https://challenges.cloudflare.com","frame-ancestors 'none'","base-uri 'none'","form-action 'self' https://wa.me","object-src 'none'"];
  headers.set('Content-Security-Policy',directives.join('; '));headers.set('X-Content-Type-Options','nosniff');headers.set('X-Frame-Options','DENY');headers.set('Referrer-Policy','strict-origin-when-cross-origin');headers.set('Permissions-Policy','camera=(), microphone=(), geolocation=(), payment=(), browsing-topics=()');headers.set('Cross-Origin-Opener-Policy','same-origin');headers.set('Strict-Transport-Security','max-age=63072000; includeSubDomains');
  if(!headers.has('Cache-Control'))headers.set('Cache-Control','no-store');
  return new Response(response.body,{status:response.status,headers});
@@ -63,13 +63,25 @@ export async function booking(request,env={},fetcher=fetch) {
  return reply(200,'Solicitação enviada. Aguarde a equipe para confirmar seu horário.');
  }catch{return reply(503,'Não foi possível enviar agora. Tente novamente ou use o WhatsApp.');}
 }
+function assetResponse(request,asset){
+ const bytes=Uint8Array.from(atob(asset.data),c=>c.charCodeAt(0)),headers=new Headers({'Content-Type':asset.type,'Cache-Control':'public, max-age=3600','Content-Length':String(bytes.length)});
+ if(asset.type==='video/mp4'){
+  headers.set('Accept-Ranges','bytes');const range=request.headers.get('Range');
+  if(range){const match=/^bytes=(\d*)-(\d*)$/.exec(range);let start,end;
+   if(match&&(match[1]||match[2])){start=match[1]?Number(match[1]):Math.max(0,bytes.length-Number(match[2]));end=match[1]&&match[2]?Math.min(Number(match[2]),bytes.length-1):bytes.length-1;}
+   if(!match||!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>=bytes.length||end<start){headers.set('Content-Range','bytes */'+bytes.length);headers.set('Content-Length','0');return new Response(null,{status:416,headers});}
+   headers.set('Content-Range','bytes '+start+'-'+end+'/'+bytes.length);headers.set('Content-Length',String(end-start+1));return new Response(request.method==='HEAD'?null:bytes.slice(start,end+1),{status:206,headers});
+  }
+ }
+ return new Response(request.method==='HEAD'?null:bytes,{headers});
+}
 export default {async fetch(request,env={}) {
  const url=new URL(request.url),nonce=crypto.randomUUID().replaceAll('-','');
  const origin=env.LOCAL_DEV?url.origin:canonical;
  let response;
  if(url.pathname==='/api/agendamento')response=await booking(request,env);
  else if(!['GET','HEAD'].includes(request.method))response=new Response('Método não permitido.',{status:405,headers:{Allow:'GET, HEAD'}});
- else if(assets[url.pathname]){const a=assets[url.pathname];response=new Response(Uint8Array.from(atob(a.data),c=>c.charCodeAt(0)),{headers:{'Content-Type':a.type,'Cache-Control':'public, max-age=3600'}});}
+ else if(assets[url.pathname])response=assetResponse(request,assets[url.pathname]);
  else if(url.pathname==='/')response=new Response(home(origin,nonce,env.TURNSTILE_SITE_KEY||''),{headers:{'Content-Type':'text/html; charset=utf-8'}});
  else if(url.pathname==='/privacidade'||url.pathname==='/termos')response=new Response(legal(url.pathname.slice(1),origin),{headers:{'Content-Type':'text/html; charset=utf-8'}});
  else if(url.pathname==='/robots.txt')response=new Response('User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: '+origin+'/sitemap.xml\n',{headers:{'Content-Type':'text/plain; charset=utf-8'}});

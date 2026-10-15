@@ -1,0 +1,8 @@
+{
+  "origin": "User-requested background outpainting of assets/noiva-5-original.png with Imagegen",
+  "createdAt": "2026-10-15",
+  "width": 1086,
+  "height": 1448,
+  "prompt": "OUTPAINT ONLY. Extend this exact supplied wedding photograph vertically to a final 3:4 portrait canvas, ideally 1200 x 1600 pixels. The current full original photo must remain completely visible and unchanged in the middle. Add about 140 pixels of realistic environmental background ABOVE and about 140 pixels BELOW, keeping original width and original subject scale. Preserve the exact woman, her face, hairstyle, pose, dress, entire train and veil, sofa, plant, curtains, lighting, color grading, photographic sharpness and original framing. Do not zoom, crop, stretch, retouch, beautify, replace, relight or redraw the original woman or dress. Fill only the new top/bottom canvas with seamless natural continuations of the same warm salon interior: curtain and plant at top, carpet/floor at bottom. The entire white dress train must remain visible with additional floor margin below it. No bars, borders, text, gradients or blur padding. Match the original realistic texture and quality precisely. Final image aspect ratio must be exactly 3:4 so it fills a portrait 3:4 website carousel without cropping the original photo.",
+  "sha256": "5ed1b32c32ac895ca1d6c5112f6005c40aadc378be474b7119b9b4632046bb59"
+}

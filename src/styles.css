@@ -15,3 +15,7 @@
 
 /* Drawn icons avoid platform-specific emoji glyphs on mobile. */
 .site-icon{width:1em;height:1em;display:inline-block;vertical-align:-.15em;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.site-icon-asterisk{stroke-width:2.2}.logo-star .site-icon{display:block}.gallery-controls button{display:grid;place-items:center}.footer-bottom a{gap:6px}
+
+/* Meraki's supplied brand emblem, sized consistently across devices. */
+.logo{flex-direction:row;gap:12px}.brand-mark{display:block;width:66px;height:55px;object-fit:contain;flex-shrink:0}.brand-wordmark{display:flex;flex-direction:column;align-items:center}.brand-wordmark .logo-sub{margin-left:5px}
+@media(max-width:767px){.logo{gap:8px}.brand-mark{width:46px;height:39px}}

@@ -1,0 +1,9 @@
+{
+  "original": "assets/gallery-hair-original.png",
+  "restored": "assets/gallery-hair-restored.png",
+  "served": "assets/gallery-hair-restored-v1.webp",
+  "width": 1254,
+  "height": 1254,
+  "processing": "Built-in ImageGen photo restoration; AI reconstruction from low-resolution original. Lossless WebP packaging.",
+  "prompt": "Restore and upscale the supplied 206 × 206 photo, preserving the back-facing person, pose, square composition, blonde color, wave pattern, gray curtains and natural lighting; reduce pixelation with conservative realistic hair texture. No new objects, face, text or styling."
+}

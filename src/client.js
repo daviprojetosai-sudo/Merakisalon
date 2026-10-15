@@ -16,8 +16,46 @@ document.querySelectorAll('.gallery-open').forEach(a=>a.addEventListener('click'
 $('#lightbox-close')?.addEventListener('click',()=>dialog.close());
 dialog?.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 dialog?.addEventListener('close',()=>opener?.focus());
-let galleryIndex=1;
-function galleryStep(direction){galleryIndex=(galleryIndex+direction+content.gallery.length)%content.gallery.length;document.querySelectorAll('.gallery-item').forEach((figure,i)=>{const item=content.gallery[(galleryIndex+i-1+content.gallery.length)%content.gallery.length],a=figure.querySelector('a'),image=figure.querySelector('img');a.href='/assets/'+item.file;a.dataset.gallery=item.id;a.setAttribute('aria-label','Ampliar: '+item.title);image.src=a.href;image.alt=item.alt;figure.querySelector('.eyebrow').textContent=item.category;figure.querySelector('.gallery-caption').textContent=item.title;});$('#gallery-count').textContent=String(galleryIndex+1).padStart(2,'0')+' / '+String(content.gallery.length).padStart(2,'0');}
+// Decode the incoming photos before blending away the current, fully visible frame.
+let galleryIndex=1,galleryTarget=1,galleryChanging=false;
+const galleryFigures=[...document.querySelectorAll('.gallery-item')],galleryMotion=matchMedia('(prefers-reduced-motion: reduce)'),galleryDecoded=new Map();
+function decodeGalleryPhoto(item){
+ const url='/assets/'+item.file;
+ if(!galleryDecoded.has(url)){
+  const image=new Image();image.src=url;
+  galleryDecoded.set(url,image.decode().catch(error=>{galleryDecoded.delete(url);throw error;}));
+ }
+ return galleryDecoded.get(url);
+}
+async function renderGallery(next){
+ const items=galleryFigures.map((_,i)=>content.gallery[(next+i-1+content.gallery.length)%content.gallery.length]);
+ await Promise.all(items.map(decodeGalleryPhoto));
+ const outgoing=[],animations=[];
+ galleryFigures.forEach((figure,i)=>{
+  const item=items[i],a=figure.querySelector('a'),image=figure.querySelector('img');
+  if(!galleryMotion.matches&&figure.getClientRects().length){
+   const previous=image.cloneNode();previous.className='gallery-image-outgoing';previous.alt='';previous.setAttribute('aria-hidden','true');previous.removeAttribute('loading');previous.style.objectPosition=getComputedStyle(image).objectPosition;previous.style.width='100%';previous.style.height='100%';a.append(previous);outgoing.push(previous);
+  }
+  a.href='/assets/'+item.file;a.dataset.gallery=item.id;a.setAttribute('aria-label','Ampliar: '+item.title);
+  image.src=a.href;image.alt=item.alt;figure.querySelector('.eyebrow').textContent=item.category;figure.querySelector('.gallery-caption').textContent=item.title;
+ });
+ galleryIndex=next;
+ $('#gallery-count').textContent=String(next+1).padStart(2,'0')+' / '+String(content.gallery.length).padStart(2,'0');
+ if(galleryMotion.matches)return;
+ try{
+  for(const image of outgoing)animations.push(image.animate([{opacity:1},{opacity:0}],{duration:280,easing:'cubic-bezier(0.16, 1, 0.3, 1)',fill:'forwards'}));
+  for(const figure of galleryFigures)if(figure.getClientRects().length)animations.push(figure.querySelector('figcaption').animate([{opacity:.35},{opacity:1}],{duration:280,easing:'cubic-bezier(0.16, 1, 0.3, 1)'}));
+  await Promise.all(animations.map(animation=>animation.finished.catch(()=>{})));
+ }finally{outgoing.forEach(image=>image.remove());animations.forEach(animation=>animation.cancel());}
+}
+async function galleryStep(direction){
+ galleryTarget=(galleryTarget+direction+content.gallery.length)%content.gallery.length;
+ if(galleryChanging)return;
+ galleryChanging=true;
+ try{while(galleryTarget!==galleryIndex)await renderGallery(galleryTarget);}
+ catch{galleryTarget=galleryIndex;$('#gallery-count').textContent='A foto não carregou. Tente novamente.';}
+ finally{galleryChanging=false;}
+}
 $('#gallery-prev')?.addEventListener('click',()=>galleryStep(-1));$('#gallery-next')?.addEventListener('click',()=>galleryStep(1));
 $('#load-map')?.addEventListener('click',()=>{const iframe=document.createElement('iframe');iframe.title='Localização do Meraki Salon em Caxias do Sul';iframe.referrerPolicy='no-referrer';iframe.loading='lazy';iframe.src='https://www.google.com/maps?q='+encodeURIComponent('Meraki Salon, Rua Dom José Baréa 1813, Caxias do Sul')+'&output=embed';$('.map-placeholder').replaceChildren(iframe);});
 let captchaLoaded=false;

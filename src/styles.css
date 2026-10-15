@@ -48,3 +48,7 @@
 
 /* Each supplied portrait keeps its subject centered as it changes position. */
 .gallery-open[data-gallery="makeup"] img{object-position:50% 35%}.gallery-open[data-gallery="bridal"] img,.gallery-open[data-gallery="hair"] img{object-position:center}
+
+/* Keep the outgoing frame in place until the decoded next photo is visible. */
+.gallery-open .gallery-image-outgoing{position:absolute;inset:0;pointer-events:none}
+.gallery-open .photo-expand{z-index:1}

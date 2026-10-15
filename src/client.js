@@ -80,7 +80,7 @@ finally{resetCaptcha();buttons.forEach(b=>b.disabled=false);}
 dialog?.addEventListener('keydown',event=>{if(event.key!=='Tab')return;const controls=[...dialog.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')].filter(el=>!el.disabled);const first=controls[0],last=controls.at(-1);if(!first)return;if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}});
 
 
-// Native scrolling keeps all five photos available without JavaScript.
+// Native scrolling keeps all photos available without JavaScript.
 const bridal=$('.bridal-carousel');
 if(bridal){
  const track=$('#bridal-track'),slides=[...track.querySelectorAll('.bridal-slide')],thumbnails=[...bridal.querySelectorAll('[data-bridal-photo]')],toggle=$('#bridal-toggle'),announcement=$('#bridal-status'),motion=matchMedia('(prefers-reduced-motion: reduce)');

@@ -37,7 +37,7 @@
 .bridal-play-icon{display:none}
 .bridal-carousel[data-playing="false"] .bridal-pause-icon{display:none}
 .bridal-carousel[data-playing="false"] .bridal-play-icon{display:block}
-.bridal-thumbnails{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.bridal-thumbnails{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}
 .bridal-thumbnails button{min-width:0;min-height:44px;padding:3px;border:1px solid transparent;background:transparent;transition:border-color var(--motion-fast) var(--ease-out)}
 .bridal-thumbnails button[aria-current="true"]{border-color:var(--gold)}
 .bridal-thumbnails img{width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:var(--paper)}

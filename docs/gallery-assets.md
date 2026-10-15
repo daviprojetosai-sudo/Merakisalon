@@ -13,3 +13,7 @@ A navegação agora decodifica as fotos antes da troca e dissolve a imagem anter
 ## Unhas e Sobrancelhas
 
 Restaurado o item Unhas (Seu toque pessoal) com a mesma foto anterior de Unsplash, identificada como ilustrativa na ampliação. Adicionado Sobrancelhas (A expressão do seu olhar) com o anexo original fornecido pelo usuário, convertido para WebP sem perda. A galeria agora contém Maquiagem, Noivas, Cabelos, Unhas e Sobrancelhas; o contador do HTML é gerado a partir do total de itens. Transição e navegação existentes preservadas.
+
+## Sexta foto do Espaço Noiva
+
+Adicionada a foto fornecida em 15/10/2026: formanda com vestido vinho, diante do espelho. Original de 979 × 1305 preservado em assets/noiva-6-original.png; WebP sem perda em assets/noiva-6-original.lossless.webp. Galeria e miniaturas passam a seis fotos; contadores gerados a partir do total e apresentação integral com contain.

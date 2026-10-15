@@ -1,0 +1,8 @@
+{
+  "origin": "assets/gallery-bridal-original.png",
+  "served": "assets/gallery-bridal.webp",
+  "width": 1440,
+  "height": 1920,
+  "processing": "Lossless WebP; original resolution and all decoded RGBA pixels verified identical.",
+  "rgbaSha256": "82a926ec754551e824293f705b3bfaac57cbc8197812d06ed664cc6ccbfdda00"
+}

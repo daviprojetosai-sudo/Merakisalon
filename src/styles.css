@@ -45,3 +45,6 @@
 @media(max-width:1023px){.bride-grid{grid-template-columns:1fr minmax(0,380px);gap:42px}}
 @media(max-width:767px){.bride-grid{grid-template-columns:minmax(0,1fr);gap:35px}.bridal-carousel{max-width:460px;justify-self:center}.bridal-heading{margin-bottom:12px}.bridal-thumbnails{gap:7px;margin-top:12px}}
 .bride-section{--muted:#655e53}
+
+/* Each supplied portrait keeps its subject centered as it changes position. */
+.gallery-open[data-gallery="makeup"] img{object-position:50% 35%}.gallery-open[data-gallery="bridal"] img,.gallery-open[data-gallery="hair"] img{object-position:center}

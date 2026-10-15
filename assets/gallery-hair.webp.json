@@ -1,0 +1,8 @@
+{
+  "origin": "assets/gallery-hair-original.png",
+  "served": "assets/gallery-hair.webp",
+  "width": 206,
+  "height": 206,
+  "processing": "Lossless WebP; original resolution and all decoded RGBA pixels verified identical.",
+  "rgbaSha256": "f5842a45742e5249d156c864e689275b8dbaf2e58161d519ebc34fd9f0fc8bf5"
+}

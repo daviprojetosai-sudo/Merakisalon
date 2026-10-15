@@ -1,0 +1,8 @@
+{
+  "origin": "assets/about-portrait.png",
+  "served": "assets/about-portrait.lossless.webp",
+  "width": 1440,
+  "height": 1920,
+  "processing": "Lossless WebP; original resolution and all decoded RGBA pixels verified identical.",
+  "rgbaSha256": "38703659faf5827369db663b2da93ef35309da63350db00ffc4752f25e90444a"
+}

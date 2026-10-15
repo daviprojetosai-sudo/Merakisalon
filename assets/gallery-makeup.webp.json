@@ -1,0 +1,8 @@
+{
+  "origin": "assets/gallery-makeup-original.png",
+  "served": "assets/gallery-makeup.webp",
+  "width": 1440,
+  "height": 1910,
+  "processing": "Lossless WebP; original resolution and all decoded RGBA pixels verified identical.",
+  "rgbaSha256": "dfcb5c451f150033e2ab5c38063b89a51807eb01d70e7ae2a3268f2b1c369db2"
+}

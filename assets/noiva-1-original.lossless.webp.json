@@ -1,0 +1,8 @@
+{
+  "origin": "assets/noiva-1-original.png",
+  "served": "assets/noiva-1-original.lossless.webp",
+  "width": 1080,
+  "height": 1440,
+  "processing": "Lossless WebP; original resolution and all decoded RGBA pixels verified identical.",
+  "rgbaSha256": "3466c4fdad7ecd80a9d6b1d8bdb80f34b991d044084be30c0ba9049e1a1a5332"
+}

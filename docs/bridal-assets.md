@@ -5,3 +5,5 @@ Origem: cinco fotografias fornecidas pelo usuário em 14/10/2026, na ordem origi
 Tanto a foto principal quanto as miniaturas exibem cada fotografia inteira, com object-fit: contain. O botão flutuante do WhatsApp fica oculto enquanto o carrossel está visível para não cobrir as fotos.
 
 Interação preservada: troca automática a cada seis segundos enquanto a seção estiver visível; pausa por botão, navegação manual, foco nos controles e toque. Suspende temporariamente ao passar o mouse e ao ocultar a página. Com movimento reduzido, inicia pausado. Controles, miniaturas e navegação nativa por deslize permanecem disponíveis.
+
+Distribuição desde 15/10/2026: WebP sem perda na resolução original, com todos os pixels RGBA verificados como idênticos à imagem PNG correspondente. Os PNGs e seus metadados originais continuam preservados no projeto. Apenas o formato de distribuição mudou; iluminação, cores, conteúdo e enquadramento foram mantidos.

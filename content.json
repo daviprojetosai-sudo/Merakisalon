@@ -82,32 +82,25 @@
   ],
   "gallery": [
     {
-      "id": "hair",
-      "title": "Textura & movimento",
-      "category": "CABELOS",
-      "alt": "Fotografia ilustrativa de mulher com cabelo castanho iluminado e ondas suaves.",
-      "file": "hero.webp"
-    },
-    {
       "id": "makeup",
       "title": "Beleza nos detalhes",
       "category": "MAQUIAGEM",
-      "alt": "Fotografia de banco de imagens mostrando uma maquiagem sendo aplicada.",
-      "file": "makeup.webp"
-    },
-    {
-      "id": "nails",
-      "title": "Seu toque pessoal",
-      "category": "UNHAS",
-      "alt": "Fotografia de banco de imagens de cuidado de unhas.",
-      "file": "nails.webp"
+      "alt": "Maquiagem com sombra iluminada, delineado e batom rosado, em mulher de cabelos castanhos.",
+      "file": "gallery-makeup.webp"
     },
     {
       "id": "bridal",
-      "title": "Momentos especiais",
+      "title": "Seu grande dia",
       "category": "NOIVAS",
-      "alt": "Fotografia de banco de imagens de uma mulher com cabelo preso.",
-      "file": "bridal.webp"
+      "alt": "Noiva de vestido branco diante de espelho oval iluminado no Espaço Noiva.",
+      "file": "gallery-bridal.webp"
+    },
+    {
+      "id": "hair",
+      "title": "Textura & movimento",
+      "category": "CABELOS",
+      "alt": "Cabelos loiros longos e ondulados vistos de costas.",
+      "file": "gallery-hair.webp"
     }
   ],
   "testimonials": [
@@ -171,31 +164,31 @@
   },
   "bridalGallery": [
     {
-      "file": "noiva-1-original.png",
+      "file": "noiva-1-original.lossless.webp",
       "width": 1080,
       "height": 1440,
       "alt": "Noiva de costas com vestido branco e penteado semipreso, diante do espelho do Espaço Noiva."
     },
     {
-      "file": "noiva-2-original.png",
+      "file": "noiva-2-original.lossless.webp",
       "width": 1080,
       "height": 1440,
       "alt": "Produção com vestido rosa, coroa e cabelos escuros semipresos, refletida no espelho do salão."
     },
     {
-      "file": "noiva-3-original.png",
+      "file": "noiva-3-original.lossless.webp",
       "width": 1080,
       "height": 1440,
       "alt": "Noiva com vestido branco, maquiagem e penteado semipreso junto à bancada e ao espelho."
     },
     {
-      "file": "noiva-4-original.png",
+      "file": "noiva-4-original.lossless.webp",
       "width": 1066,
       "height": 1421,
       "alt": "Produção com vestido azul, coroa e cabelos loiros ondulados, vista de costas no salão."
     },
     {
-      "file": "noiva-5-expanded.png",
+      "file": "noiva-5-expanded.lossless.webp",
       "width": 1086,
       "height": 1448,
       "alt": "Noiva com véu longo e vestido branco, ao lado do sofá e das cortinas do Espaço Noiva."

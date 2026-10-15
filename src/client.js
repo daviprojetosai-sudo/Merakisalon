@@ -16,7 +16,7 @@ document.querySelectorAll('.gallery-open').forEach(a=>a.addEventListener('click'
 $('#lightbox-close')?.addEventListener('click',()=>dialog.close());
 dialog?.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 dialog?.addEventListener('close',()=>opener?.focus());
-let galleryIndex=0;
+let galleryIndex=1;
 function galleryStep(direction){galleryIndex=(galleryIndex+direction+content.gallery.length)%content.gallery.length;document.querySelectorAll('.gallery-item').forEach((figure,i)=>{const item=content.gallery[(galleryIndex+i-1+content.gallery.length)%content.gallery.length],a=figure.querySelector('a'),image=figure.querySelector('img');a.href='/assets/'+item.file;a.dataset.gallery=item.id;a.setAttribute('aria-label','Ampliar: '+item.title);image.src=a.href;image.alt=item.alt;figure.querySelector('.eyebrow').textContent=item.category;figure.querySelector('.gallery-caption').textContent=item.title;});$('#gallery-count').textContent=String(galleryIndex+1).padStart(2,'0')+' / '+String(content.gallery.length).padStart(2,'0');}
 $('#gallery-prev')?.addEventListener('click',()=>galleryStep(-1));$('#gallery-next')?.addEventListener('click',()=>galleryStep(1));
 $('#load-map')?.addEventListener('click',()=>{const iframe=document.createElement('iframe');iframe.title='Localização do Meraki Salon em Caxias do Sul';iframe.referrerPolicy='no-referrer';iframe.loading='lazy';iframe.src='https://www.google.com/maps?q='+encodeURIComponent('Meraki Salon, Rua Dom José Baréa 1813, Caxias do Sul')+'&output=embed';$('.map-placeholder').replaceChildren(iframe);});

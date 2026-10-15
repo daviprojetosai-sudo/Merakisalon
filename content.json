@@ -9,9 +9,9 @@
   "state": "RS",
   "latitude": -29.1731577,
   "longitude": -51.172334,
-  "phone": "5554991693123",
-  "phoneDisplay": "(54) 99169-3123",
-  "phoneVerified": false,
+  "phone": "5554999321003",
+  "phoneDisplay": "(54) 99932-1003",
+  "phoneVerified": true,
   "instagram": "https://www.instagram.com/merakisalonbr/",
   "facebook": "https://www.facebook.com/profile.php?id=61553576744012",
   "maps": "https://www.google.com/maps/place/?q=place_id:ChIJj5iHnVq9HpURSbgN3pykxtw",
@@ -74,7 +74,7 @@
       "id": "noivas",
       "number": "05",
       "name": "Noivas & ocasiões",
-      "description": "Seu grande dia começa com carinho. Conheça o espaço noiva e converse sobre produções para eventos e debutantes.",
+      "description": "Seu grande dia começa com carinho. Conheça o Espaço Noiva e converse sobre produções para eventos e debutantes.",
       "price": "Orçamento personalizado",
       "image": "bridal",
       "icon": "flower"
@@ -86,35 +86,40 @@
       "title": "Beleza nos detalhes",
       "category": "MAQUIAGEM",
       "alt": "Maquiagem com sombra iluminada, delineado e batom rosado, em mulher de cabelos castanhos.",
-      "file": "gallery-makeup.webp"
+      "file": "gallery-makeup.webp",
+      "preview": "gallery-makeup-preview-v1.webp"
     },
     {
       "id": "bridal",
       "title": "Seu grande dia",
       "category": "NOIVAS",
       "alt": "Noiva de vestido branco diante de espelho oval iluminado no Espaço Noiva.",
-      "file": "gallery-bridal.webp"
+      "file": "gallery-bridal.webp",
+      "preview": "gallery-bridal-preview-v1.webp"
     },
     {
       "id": "hair",
       "title": "Textura & movimento",
       "category": "CABELOS",
       "alt": "Cabelos loiros longos e ondulados vistos de costas.",
-      "file": "gallery-hair-restored-v2.webp"
+      "file": "gallery-hair-restored-v2.webp",
+      "preview": "gallery-hair-restored-v2-preview-v1.webp"
     },
     {
       "id": "nails",
       "title": "Seu toque pessoal",
       "category": "UNHAS",
       "alt": "Unhas em azul-petróleo com detalhe prateado de glitter e anel dourado, diante de vasos com folhagens secas.",
-      "file": "gallery-nails-v2.webp"
+      "file": "gallery-nails-v2.webp",
+      "preview": "gallery-nails-v2-preview-v1.webp"
     },
     {
       "id": "brows",
       "title": "A expressão do seu olhar",
       "category": "SOBRANCELHAS",
       "alt": "Detalhe de sobrancelhas definidas e penteadas, em foto fornecida pelo Meraki Salon.",
-      "file": "gallery-brows-v1.webp"
+      "file": "gallery-brows-v1.webp",
+      "preview": "gallery-brows-v1-preview-v1.webp"
     }
   ],
   "testimonials": [
@@ -181,37 +186,43 @@
       "file": "noiva-1-original.lossless.webp",
       "width": 1080,
       "height": 1440,
-      "alt": "Noiva de costas com vestido branco e penteado semipreso, diante do espelho do Espaço Noiva."
+      "alt": "Noiva de costas com vestido branco e penteado semipreso, diante do espelho do Espaço Noiva.",
+      "thumbnail": "noiva-1-original-thumb-v1.webp"
     },
     {
       "file": "noiva-2-original.lossless.webp",
       "width": 1080,
       "height": 1440,
-      "alt": "Produção com vestido rosa, coroa e cabelos escuros semipresos, refletida no espelho do salão."
+      "alt": "Produção com vestido rosa, coroa e cabelos escuros semipresos, refletida no espelho do salão.",
+      "thumbnail": "noiva-2-original-thumb-v1.webp"
     },
     {
       "file": "noiva-3-original.lossless.webp",
       "width": 1080,
       "height": 1440,
-      "alt": "Noiva com vestido branco, maquiagem e penteado semipreso junto à bancada e ao espelho."
+      "alt": "Noiva com vestido branco, maquiagem e penteado semipreso junto à bancada e ao espelho.",
+      "thumbnail": "noiva-3-original-thumb-v1.webp"
     },
     {
       "file": "noiva-4-original.lossless.webp",
       "width": 1066,
       "height": 1421,
-      "alt": "Produção com vestido azul, coroa e cabelos loiros ondulados, vista de costas no salão."
+      "alt": "Produção com vestido azul, coroa e cabelos loiros ondulados, vista de costas no salão.",
+      "thumbnail": "noiva-4-original-thumb-v1.webp"
     },
     {
       "file": "noiva-5-expanded.lossless.webp",
       "width": 1086,
       "height": 1448,
-      "alt": "Noiva com véu longo e vestido branco, ao lado do sofá e das cortinas do Espaço Noiva."
+      "alt": "Noiva com véu longo e vestido branco, ao lado do sofá e das cortinas do Espaço Noiva.",
+      "thumbnail": "noiva-5-expanded-thumb-v1.webp"
     },
     {
       "file": "noiva-6-original.lossless.webp",
       "width": 979,
       "height": 1305,
-      "alt": "Formanda com vestido vinho e cabelo preso, segurando o canudo de formatura diante do espelho do Espaço Noiva."
+      "alt": "Formanda com vestido vinho e cabelo preso, segurando o canudo de formatura diante do espelho do Espaço Noiva.",
+      "thumbnail": "noiva-6-original-thumb-v1.webp"
     }
   ],
   "spaceGallery": [

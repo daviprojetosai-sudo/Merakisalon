@@ -50,7 +50,6 @@ export async function booking(request,env={},fetcher=fetch) {
  if(allowed===false)return reply(429,'Muitas tentativas. Aguarde dez minutos e tente novamente.');
  if(channel==='whatsapp'){
  // No storage, external email or automatic booking: only a validated redirect.
- if(allowed===null&&!env.LOCAL_DEV)return reply(503,'Use o botão direto de WhatsApp para falar com a equipe.');
  return new Response(null,{status:303,headers:{Location:whatsapp(whatsappMessage(data)),'Cache-Control':'no-store'}});
  }
  if(!env.TURNSTILE_SECRET_KEY||!env.TURNSTILE_SITE_KEY||!env.RESEND_API_KEY||!env.BOOKING_FROM||!env.BOOKING_TO||allowed===null)return reply(503,'O envio pelo site ainda não está disponível. Continue pelo WhatsApp para falar com a equipe.');
@@ -72,7 +71,10 @@ export default {async fetch(request,env={}) {
  else if(url.pathname==='/api/agendamento')response=await booking(request,env);
  else if(!['GET','HEAD'].includes(request.method))response=new Response('Método não permitido.',{status:405,headers:{Allow:'GET, HEAD'}});
  else if(assets[url.pathname]){const a=assets[url.pathname];response=new Response(Uint8Array.from(atob(a.data),c=>c.charCodeAt(0)),{headers:{'Content-Type':a.type,'Cache-Control':'public, max-age=3600'}});}
- else if(url.pathname==='/')response=new Response(home(origin,nonce,env.TURNSTILE_SITE_KEY||'',env.LOCAL_DEV||env.SPACE_GALLERY_READY==='true',Number(env.SPACE_PHOTO_COUNT)||0),{headers:{'Content-Type':'text/html; charset=utf-8'}});
+ else if(url.pathname==='/'){
+ const emailReady=env.TURNSTILE_SITE_KEY&&env.TURNSTILE_SECRET_KEY&&env.RESEND_API_KEY&&env.BOOKING_FROM&&env.BOOKING_TO&&env.RATE_LIMIT_URL?.startsWith('https://')&&env.RATE_LIMIT_TOKEN;
+ response=new Response(home(origin,nonce,emailReady?env.TURNSTILE_SITE_KEY:'',env.LOCAL_DEV||env.SPACE_GALLERY_READY==='true',Number(env.SPACE_PHOTO_COUNT)||0),{headers:{'Content-Type':'text/html; charset=utf-8'}});
+ }
  else if(url.pathname==='/privacidade'||url.pathname==='/termos')response=new Response(legal(url.pathname.slice(1),origin),{headers:{'Content-Type':'text/html; charset=utf-8'}});
  else if(url.pathname==='/robots.txt')response=new Response('User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: '+origin+'/sitemap.xml\n',{headers:{'Content-Type':'text/plain; charset=utf-8'}});
  else if(url.pathname==='/sitemap.xml')response=new Response('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+['/','/privacidade','/termos'].map(p=>'<url><loc>'+origin+p+'</loc></url>').join('')+'</urlset>',{headers:{'Content-Type':'application/xml; charset=utf-8'}});

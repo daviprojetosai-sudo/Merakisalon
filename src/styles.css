@@ -89,3 +89,6 @@
 /* Keep the new hero portrait fully visible at the top of each crop. */
 .hero-picture img{object-position:center 10%}
 @media(max-width:767px){.hero-picture img{object-position:76% top}.hero-content{padding-top:225px}.hero-shade{background:linear-gradient(90deg,#30291988,#30291910),linear-gradient(0deg,#302919e6 0%,#302919aa 40%,#30291915 78%)}}
+
+/* Keep six photo targets comfortably tappable on narrow phones. */
+@media(max-width:359px){.bridal-thumbnails{grid-template-columns:repeat(3,minmax(44px,1fr))}.bridal-thumbnails img{max-height:76px}}

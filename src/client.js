@@ -20,7 +20,7 @@ dialog?.addEventListener('close',()=>opener?.focus());
 let galleryIndex=1,galleryTarget=1,galleryChanging=false;
 const galleryFigures=[...document.querySelectorAll('.gallery-item')],galleryMotion=matchMedia('(prefers-reduced-motion: reduce)'),galleryDecoded=new Map();
 function decodeGalleryPhoto(item){
- const url='/assets/'+item.file;
+ const url='/assets/'+item.preview;
  if(!galleryDecoded.has(url)){
   const image=new Image();image.src=url;
   galleryDecoded.set(url,image.decode().catch(error=>{galleryDecoded.delete(url);throw error;}));
@@ -37,7 +37,7 @@ async function renderGallery(next){
    const previous=image.cloneNode();previous.className='gallery-image-outgoing';previous.alt='';previous.setAttribute('aria-hidden','true');previous.removeAttribute('loading');previous.style.objectPosition=getComputedStyle(image).objectPosition;previous.style.width='100%';previous.style.height='100%';a.append(previous);outgoing.push(previous);
   }
   a.href='/assets/'+item.file;a.dataset.gallery=item.id;a.setAttribute('aria-label','Ampliar: '+item.title);
-  image.src=a.href;image.alt=item.alt;figure.querySelector('.eyebrow').textContent=item.category;figure.querySelector('.gallery-caption').textContent=item.title;
+  image.src='/assets/'+item.preview;image.alt=item.alt;figure.querySelector('.eyebrow').textContent=item.category;figure.querySelector('.gallery-caption').textContent=item.title;
  });
  galleryIndex=next;
  $('#gallery-count').textContent=String(next+1).padStart(2,'0')+' / '+String(content.gallery.length).padStart(2,'0');
@@ -128,4 +128,4 @@ if(spaceDialog){
 }
 
 // Keep photo exploration unobstructed while either photographic section is visible.
-if('IntersectionObserver' in window&&$('.floating-whatsapp')){const visiblePhotoRegions=new Set();const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting)visiblePhotoRegions.add(entry.target);else visiblePhotoRegions.delete(entry.target);}$('.floating-whatsapp').hidden=visiblePhotoRegions.size>0;});document.querySelectorAll('.bridal-carousel,#nosso-espaco').forEach(region=>observer.observe(region));}
+if('IntersectionObserver' in window&&$('.floating-whatsapp')){const visiblePhotoRegions=new Set();const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting)visiblePhotoRegions.add(entry.target);else visiblePhotoRegions.delete(entry.target);}$('.floating-whatsapp').hidden=visiblePhotoRegions.size>0;});document.querySelectorAll('.bridal-carousel,#nosso-espaco,#agendamento,#galeria').forEach(region=>observer.observe(region));}

@@ -55,7 +55,7 @@ Evidências locais em qa/; resumo permanente em docs/final-report.md.
 Testes de CAPTCHA/Redis/Resend usam mocks; nenhum e-mail real é enviado.
 
 ## Antes do lançamento público
-Confirme o WhatsApp (54) 99169-3123: aparece em cadastros públicos, mas não foi confirmado nos perfis oficiais. Confirme endereço/sala, horários e preços.
+WhatsApp oficial confirmado pelo responsável pelo projeto em 15/10/2026: (54) 99932-1003. Confirme endereço/sala, horários e preços.
 Configure CAPTCHA, Redis e envio caso queira habilitar solicitações por e-mail.
 Substitua fotos ilustrativas por fotos autorizadas do salão, da equipe e dos trabalhos; publique somente depoimentos reais autorizados.
 Valide as políticas com o responsável pelo salão e registre canal de privacidade e retenção real.

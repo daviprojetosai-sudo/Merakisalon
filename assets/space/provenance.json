@@ -18,7 +18,8 @@
     "39b415ed-5cfa-4dfd-ba77-67ac74e33f46",
     "a0a319b6-9062-49d5-956c-96af80b91efb",
     "38cfbd16-7e7d-4dd9-b667-9832f82c7703",
-    "97816e61-ee16-4f34-b1e9-b846dabc9547"
+    "97816e61-ee16-4f34-b1e9-b846dabc9547",
+    "3215d306-4647-4792-bbe6-6420dff8b126"
   ],
   "photos": [
     {
@@ -182,6 +183,15 @@
       "alt": "Buquê de flores coloridas ao lado de um sofá claro do salão.",
       "original": "assets/space/space-18-original.png",
       "thumbnail": "space-18-thumb-9cb804cd9497.webp"
+    },
+    {
+      "width": 1440,
+      "height": 1920,
+      "title": "Que a gente saiba florir",
+      "alt": "Placas de madeira entre plantas e pedras com a frase Que a gente saiba florir onde a vida nos plantar.",
+      "file": "space-19-0666f7c87ecf.webp",
+      "thumbnail": "space-19-thumb-cd0d37e1c72f.webp",
+      "original": "assets/space/space-19-original.png"
     }
   ]
 }

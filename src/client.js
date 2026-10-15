@@ -110,7 +110,7 @@ if(bridal){
 // The space viewer keeps full-size photography out of the initial page load.
 const spaceDialog=$('#space-lightbox');
 if(spaceDialog){
- const photos=content.spaceGallery,photo=$('#space-full-photo'),position=$('#space-position');let index=0,trigger=null,requestId=0,pointerStart=null;
+ const photos=content.spaceGallery.slice(0,Number($('#nosso-espaco').dataset.photoCount)||content.spaceGallery.length),photo=$('#space-full-photo'),position=$('#space-position');let index=0,trigger=null,requestId=0,pointerStart=null;
  async function showSpacePhoto(next){
   index=(next+photos.length)%photos.length;const selected=index,item=photos[index],id=++requestId;
   position.textContent=String(index+1).padStart(2,'0')+' / '+String(photos.length).padStart(2,'0')+' · '+item.title;

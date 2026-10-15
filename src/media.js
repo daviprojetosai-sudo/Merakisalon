@@ -3,7 +3,7 @@ export async function media(request,env){
  const path=new URL(request.url).pathname,upload=path.startsWith('/api/media/'),name=path.slice(upload?11:7),expected=mediaManifest[name];
  if(!expected)return new Response('Imagem não encontrada.',{status:404});
  if(upload){
-  if(!env.MEDIA_UPLOAD_TOKEN||request.headers.get('authorization')!=='Bearer '+env.MEDIA_UPLOAD_TOKEN)return new Response('Não encontrado.',{status:404});
+  if(env.MEDIA_UPLOAD_ENABLED!=='true'||!env.MEDIA_UPLOAD_TOKEN||request.headers.get('authorization')!=='Bearer '+env.MEDIA_UPLOAD_TOKEN)return new Response('Não encontrado.',{status:404});
   if(request.method!=='PUT')return new Response(null,{status:405,headers:{Allow:'PUT'}});
   if(!env.BUCKET)return new Response('Armazenamento indisponível.',{status:503});
   if(request.headers.get('content-type')!=='image/webp'||Number(request.headers.get('content-length'))!==expected.size)return new Response('Arquivo inválido.',{status:400});

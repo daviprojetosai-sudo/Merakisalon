@@ -7,3 +7,4 @@ dist/
 qa/
 *.zip
 
+.impeccable/review/

@@ -41,3 +41,30 @@ finally{resetCaptcha();buttons.forEach(b=>b.disabled=false);}
 
 dialog?.addEventListener('keydown',event=>{if(event.key!=='Tab')return;const controls=[...dialog.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')].filter(el=>!el.disabled);const first=controls[0],last=controls.at(-1);if(!first)return;if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}});
 
+
+// Native scrolling keeps all five photos available without JavaScript.
+const bridal=$('.bridal-carousel');
+if(bridal){
+ const track=$('#bridal-track'),slides=[...track.querySelectorAll('.bridal-slide')],thumbnails=[...bridal.querySelectorAll('[data-bridal-photo]')],toggle=$('#bridal-toggle'),announcement=$('#bridal-status'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ let index=0,playing=!motion.matches,visible=!('IntersectionObserver' in window),hovered=false,timer=null,scrollFrame=null;
+ const canAdvance=()=>playing&&visible&&!hovered&&!document.hidden;
+ function schedule(){clearTimeout(timer);if(!canAdvance())return;timer=setTimeout(async()=>{const next=(index+1)%slides.length;try{await slides[next].querySelector('img').decode();}catch{}if(canAdvance())go(next,false);},6000);}
+ function render(){bridal.dataset.playing=String(playing);toggle.querySelector('span').textContent=playing?'Pausar':'Reproduzir';toggle.setAttribute('aria-label',playing?'Pausar carrossel':'Reproduzir carrossel');$('#bridal-count').textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');announcement.setAttribute('aria-live',playing?'off':'polite');announcement.textContent='Foto '+(index+1)+' de '+slides.length;thumbnails.forEach((button,i)=>{if(i===index)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});slides.forEach((slide,i)=>slide.setAttribute('aria-hidden',String(i!==index)));schedule();}
+ function pause(){playing=false;render();}
+ function go(next,manual=true){const previous=index;if(manual)playing=false;index=(next+slides.length)%slides.length;track.scrollTo({left:index*track.clientWidth,behavior:motion.matches||Math.abs(index-previous)>1?'instant':'smooth'});render();}
+ bridal.querySelector('.bridal-controls').hidden=false;bridal.querySelector('.bridal-thumbnails').hidden=false;
+ $('#bridal-prev').addEventListener('click',()=>go(index-1));$('#bridal-next').addEventListener('click',()=>go(index+1));
+ thumbnails.forEach(button=>button.addEventListener('click',()=>go(Number(button.dataset.bridalPhoto))));
+ toggle.addEventListener('click',()=>{playing=!playing;render();});
+ bridal.addEventListener('focusin',event=>{if(event.target!==toggle)pause();});
+ track.addEventListener('pointerdown',pause,{passive:true});track.addEventListener('wheel',pause,{passive:true});
+ bridal.addEventListener('pointerenter',event=>{if(event.pointerType!=='mouse')return;hovered=true;schedule();});
+ bridal.addEventListener('pointerleave',()=>{hovered=false;schedule();});
+ track.addEventListener('keydown',event=>{const key=event.key;if(!['ArrowLeft','ArrowRight','Home','End'].includes(key))return;event.preventDefault();go(key==='Home'?0:key==='End'?slides.length-1:index+(key==='ArrowRight'?1:-1));});
+ track.addEventListener('scroll',()=>{if(scrollFrame)return;scrollFrame=requestAnimationFrame(()=>{scrollFrame=null;const actual=Math.round(track.scrollLeft/track.clientWidth);if(actual>=0&&actual<slides.length&&actual!==index&&Math.abs(track.scrollLeft-actual*track.clientWidth)<2){index=actual;render();}});},{passive:true});
+ if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{threshold:.35}).observe(track);
+ if('ResizeObserver' in window)new ResizeObserver(()=>track.scrollTo({left:index*track.clientWidth,behavior:'instant'})).observe(track);
+ document.addEventListener('visibilitychange',schedule);window.addEventListener('pagehide',()=>clearTimeout(timer));window.addEventListener('pageshow',schedule);
+ motion.addEventListener('change',()=>{if(motion.matches)pause();});
+ render();
+}

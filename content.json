@@ -177,5 +177,42 @@
     "googleRating": 4.9,
     "ratingVerifiedAt": "2026-10-12",
     "sourceUrl": "https://portaldocasamento.com.br/fornecedores/perfil/meraki-salon-de0db84d"
-  }
+  },
+  "bridalGallery": [
+    {
+      "file": "noiva-1.webp",
+      "small": "noiva-1-small.webp",
+      "width": 960,
+      "height": 1280,
+      "alt": "Noiva de costas com vestido branco e penteado semipreso, diante do espelho do Espaço Noiva."
+    },
+    {
+      "file": "noiva-2.webp",
+      "small": "noiva-2-small.webp",
+      "width": 960,
+      "height": 1280,
+      "alt": "Produção com vestido rosa, coroa e cabelos escuros semipresos, refletida no espelho do salão."
+    },
+    {
+      "file": "noiva-3.webp",
+      "small": "noiva-3-small.webp",
+      "width": 960,
+      "height": 1280,
+      "alt": "Noiva com vestido branco, maquiagem e penteado semipreso junto à bancada e ao espelho."
+    },
+    {
+      "file": "noiva-4.webp",
+      "small": "noiva-4-small.webp",
+      "width": 960,
+      "height": 1280,
+      "alt": "Produção com vestido azul, coroa e cabelos loiros ondulados, vista de costas no salão."
+    },
+    {
+      "file": "noiva-5.webp",
+      "small": "noiva-5-small.webp",
+      "width": 960,
+      "height": 1052,
+      "alt": "Noiva com véu longo e vestido branco, ao lado do sofá e das cortinas do Espaço Noiva."
+    }
+  ]
 }

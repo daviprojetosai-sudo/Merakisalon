@@ -85,3 +85,7 @@
 @media(hover:hover){.space-photo a:hover .space-enlarge,.space-lightbox button:hover{background:var(--ink);color:var(--paper)}}
 @media(max-width:1100px){.space-intro{gap:45px}.space-photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:767px){.space-intro{grid-template-columns:1fr;gap:24px;margin-bottom:30px}.space-intro>div{justify-self:start;max-width:none}.space-intro h2{font-size:43px}.space-featured{margin-bottom:38px}.space-photos{gap:24px 16px}.space-photo{margin-bottom:20px}.space-photo figcaption{font-size:11px;margin-top:8px}.space-enlarge{width:30px;height:30px;right:8px;bottom:8px}.space-enlarge svg{width:19px;height:19px}.space-photo-heading{display:block;margin-bottom:24px}.space-photo-heading h3{font-size:29px;margin-bottom:12px}.space-invitation{align-items:flex-start;flex-direction:column;padding-top:25px;margin-top:20px}.space-invitation p{font-size:29px}.space-lightbox{padding:12px;width:calc(100vw - 20px);max-height:calc(100dvh - 20px)}.space-viewer-frame img{height:64dvh}.space-viewer-top h2{font-size:25px}.space-viewer-bottom{gap:12px}.space-lightbox #space-position{min-width:0;flex:1;font-size:11px}.space-viewer-help{display:none}}
+
+/* Keep the new hero portrait fully visible at the top of each crop. */
+.hero-picture img{object-position:center 10%}
+@media(max-width:767px){.hero-picture img{object-position:76% top}.hero-content{padding-top:225px}.hero-shade{background:linear-gradient(90deg,#30291988,#30291910),linear-gradient(0deg,#302919e6 0%,#302919aa 40%,#30291915 78%)}}

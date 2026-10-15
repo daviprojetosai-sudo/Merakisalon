@@ -12,3 +12,7 @@ Fotografia editorial horizontal original para salão brasileiro. Mulher adulta c
 ## Trocas
 Use imagens WebP locais; atualize content.json e a lista de assets em scripts/build.mjs. Nomes herdados makeup/bridal são nomes de arquivo, não afirmações de trabalho realizado pelo salão.
 
+
+## Hero atual
+
+Substituída pela imagem fornecida pelo usuário em codex-clipboard-9042fef3-ddcf-430e-96b0-efe062a4b9be.png. Original 1672 × 941 preservado em assets/hero-meraki-2026-original.png. WebP qualidade 98 em resolução original; variante de 960px qualidade 96. Não recebeu edição por IA. Enquadramento e faixa de contraste feitos em CSS: rosto preservado no desktop, texto abaixo do rosto no mobile. Preload, metadados sociais e JSON-LD apontam para o novo arquivo versionado.

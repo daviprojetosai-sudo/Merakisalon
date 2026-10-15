@@ -63,6 +63,7 @@ if(bridal){
  track.addEventListener('keydown',event=>{const key=event.key;if(!['ArrowLeft','ArrowRight','Home','End'].includes(key))return;event.preventDefault();go(key==='Home'?0:key==='End'?slides.length-1:index+(key==='ArrowRight'?1:-1));});
  track.addEventListener('scroll',()=>{if(scrollFrame)return;scrollFrame=requestAnimationFrame(()=>{scrollFrame=null;const actual=Math.round(track.scrollLeft/track.clientWidth);if(actual>=0&&actual<slides.length&&actual!==index&&Math.abs(track.scrollLeft-actual*track.clientWidth)<2){index=actual;render();}});},{passive:true});
  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{threshold:.35}).observe(track);
+ if('IntersectionObserver' in window&&$('.floating-whatsapp'))new IntersectionObserver(entries=>{$('.floating-whatsapp').hidden=entries[0].isIntersecting;}).observe(bridal);
  if('ResizeObserver' in window)new ResizeObserver(()=>track.scrollTo({left:index*track.clientWidth,behavior:'instant'})).observe(track);
  document.addEventListener('visibilitychange',schedule);window.addEventListener('pagehide',()=>clearTimeout(timer));window.addEventListener('pageshow',schedule);
  motion.addEventListener('change',()=>{if(motion.matches)pause();});

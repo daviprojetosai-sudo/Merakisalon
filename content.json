@@ -180,38 +180,33 @@
   },
   "bridalGallery": [
     {
-      "file": "noiva-1.webp",
-      "small": "noiva-1-small.webp",
-      "width": 960,
-      "height": 1280,
+      "file": "noiva-1-original.png",
+      "width": 1080,
+      "height": 1440,
       "alt": "Noiva de costas com vestido branco e penteado semipreso, diante do espelho do Espaço Noiva."
     },
     {
-      "file": "noiva-2.webp",
-      "small": "noiva-2-small.webp",
-      "width": 960,
-      "height": 1280,
+      "file": "noiva-2-original.png",
+      "width": 1080,
+      "height": 1440,
       "alt": "Produção com vestido rosa, coroa e cabelos escuros semipresos, refletida no espelho do salão."
     },
     {
-      "file": "noiva-3.webp",
-      "small": "noiva-3-small.webp",
-      "width": 960,
-      "height": 1280,
+      "file": "noiva-3-original.png",
+      "width": 1080,
+      "height": 1440,
       "alt": "Noiva com vestido branco, maquiagem e penteado semipreso junto à bancada e ao espelho."
     },
     {
-      "file": "noiva-4.webp",
-      "small": "noiva-4-small.webp",
-      "width": 960,
-      "height": 1280,
+      "file": "noiva-4-original.png",
+      "width": 1066,
+      "height": 1421,
       "alt": "Produção com vestido azul, coroa e cabelos loiros ondulados, vista de costas no salão."
     },
     {
-      "file": "noiva-5.webp",
-      "small": "noiva-5-small.webp",
-      "width": 960,
-      "height": 1052,
+      "file": "noiva-5-original.png",
+      "width": 1198,
+      "height": 1313,
       "alt": "Noiva com véu longo e vestido branco, ao lado do sofá e das cortinas do Espaço Noiva."
     }
   ]

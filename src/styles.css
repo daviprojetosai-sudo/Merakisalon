@@ -40,7 +40,7 @@
 .bridal-thumbnails{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
 .bridal-thumbnails button{min-width:0;min-height:44px;padding:3px;border:1px solid transparent;background:transparent;transition:border-color var(--motion-fast) var(--ease-out)}
 .bridal-thumbnails button[aria-current="true"]{border-color:var(--gold)}
-.bridal-thumbnails img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.bridal-thumbnails img{width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:var(--paper)}
 @media(hover:hover){.bridal-controls button:hover{background:var(--paper);border-color:var(--gold)}.bridal-thumbnails button:hover{border-color:var(--gold)}}
 @media(max-width:1023px){.bride-grid{grid-template-columns:1fr minmax(0,380px);gap:42px}}
 @media(max-width:767px){.bride-grid{grid-template-columns:minmax(0,1fr);gap:35px}.bridal-carousel{max-width:460px;justify-self:center}.bridal-heading{margin-bottom:12px}.bridal-thumbnails{gap:7px;margin-top:12px}}

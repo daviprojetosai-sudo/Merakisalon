@@ -1,0 +1,10 @@
+{
+  "original": "assets/meraki-favicon.png",
+  "served": "assets/meraki-favicon-dark-v1.png",
+  "tool": "Built-in ImageGen edit",
+  "width": 512,
+  "height": 512,
+  "prompt": "Change only the beige background of the supplied Meraki Salon square logo to flat dark warm charcoal #302c25; preserve the white woman profile, circle and exact MERAKI / SALON lettering, spacing and composition. No redesign, shadows, gradients or extra elements.",
+  "generatedOriginal": "assets/meraki-favicon-dark-original.png",
+  "export": "512px PNG, Lanczos resampling for favicon and touch icon delivery; generated original retained."
+}

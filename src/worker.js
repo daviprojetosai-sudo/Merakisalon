@@ -65,7 +65,7 @@ export async function booking(request,env={},fetcher=fetch) {
 }
 export default {async fetch(request,env={}) {
  const url=new URL(request.url),nonce=crypto.randomUUID().replaceAll('-','');
- const origin=env.LOCAL_DEV?url.origin:canonical;
+ const origin=env.LOCAL_DEV?url.origin:(env.SITE_URL||canonical);
  let response;
  if(url.pathname.startsWith('/media/')||url.pathname.startsWith('/api/media/'))response=await media(request,env);
  else if(url.pathname==='/api/agendamento')response=await booking(request,env);
